@@ -1,4 +1,4 @@
-<img src="https://github.com/view-io/postman/blob/main/assets/view_logo.png?raw=true" height="64">
+<img src="https://github.com/view-io/postman/blob/main/assets/view_logo.png?raw=true" height="48">
 
 # Postman Collection for View AI
 
