@@ -6,7 +6,7 @@
 
 ## License
 
-View software is licensed under the [Fair Core License (FCL)](https://fcl.dev/) with graduation to an Apache 2.0 license.
+View software is licensed under the [Fair Core License (FCL)](https://fcl.dev/) with graduation after two years to an Apache 2.0 license.  Use of the software requires acceptance of the license terms found in the file `LICENSE.md`.
 
 ## Feedback and Issues
 
