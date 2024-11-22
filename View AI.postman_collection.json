@@ -10,6 +10,128 @@
 			"name": "Configuration",
 			"item": [
 				{
+					"name": "Authentication",
+					"item": [
+						{
+							"name": "Generate authentication token",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-email",
+										"value": "{{email}}",
+										"type": "text"
+									},
+									{
+										"key": "x-password-sha256",
+										"value": "{{password-sha256}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-guid",
+										"value": "{{tenant-guid}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{config-rest}}/v1.0/token",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{config-rest}}",
+									"path": [
+										"v1.0",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Validate authentication token",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "mXCNtMWDsW0/pr+IwRFUja2YoIFFkhhIeTs4lGJm9SQ8YI3Lngzo3CdY16GTykN51tHHLLO4Tg7t7wAG4Uy8ye71IrQ4l1iLuuWvn5ta8ij1tiLwDfBwtVo3WjJkFF074Q3mM6BSVJoE3Z12zsTnXwYWdf3wE3mWCu0aUUdwRp2+CTi2t9NJoFQDWcz2D1emD8QmSlU5FSTgYYmVXGEZRuGJTEoFLAmmvm8nZ2h25q3ZlWrP3o1KAo97NRZ4Y7nIBPFCZ2ZiXYXDXKUxsxR/LkJV4p2olMZn97L/J8Omjikr1zq7YXqlZGhpq7gwMq7P9TJHNxjfdLw8K/wErR3+1xsXyCteGcdQt8OUuqd6TiTmiI/RRVXpgFVtQfYu58+i/h77IvcI3EhTmUeZAO8tjgPtcfIMr25EkVQrntiZd11J2v/2slduCXLE4XvL+OE8obSJKdEHwSQ5ea4B4pB2nJKjfzUfxCI7ya+k8XYzo+UGmpfMc2SOqIgP7d2qGxYX2hEbZDcAHZWSJCeJKHl+eEnQYhbDkYSf/y8JOlTj2zZMxv86jvRN3EL4axkiSMPPuA6qBbHbbSR9hW/LCuirhSqWjRn8uzeyo1SZhBPW4CnLMIvWEXeuoTsJ4RnxM0Ldtn8DDKs80gyEFfNzhO2HkfrWnnmtoT3Z/yOYC0mOx2/xo7627jGQHT1sn2JFEOd/+YWdx+uFBv2n1jC8j/MAl32yw0tUiSXh+sik81HIwaHjwyEbC3aK7Enpvh7acIVwU1hLYVxhrflDZLwRlIwlfWA0zfbjk/LVWkrkYAb4aQh25wspkZ8qeR4kY4n6PqtsxL+hVFE9zPeL/4lLg3kXFeWH69uSzQKLlzslkTTCAdNdv0eFulFCq7qDOsbLv0D/RbBOwtlOfc0455z85b89/BxEjiRgrGdVBZPvQO/ASd4=",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{config-rest}}/v1.0/token/validate",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{config-rest}}",
+									"path": [
+										"v1.0",
+										"token",
+										"validate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve token details",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "mXCNtMWDsW0/pr+IwRFUja2YoIFFkhhIeTs4lGJm9SQ8YI3Lngzo3CdY16GTykN51tHHLLO4Tg7t7wAG4Uy8ye71IrQ4l1iLuuWvn5ta8ij1tiLwDfBwtVo3WjJkFF074Q3mM6BSVJoE3Z12zsTnXwYWdf3wE3mWCu0aUUdwRp2+CTi2t9NJoFQDWcz2D1emD8QmSlU5FSTgYYmVXGEZRuGJTEoFLAmmvm8nZ2h25q3ZlWrP3o1KAo97NRZ4Y7nIBPFCZ2ZiXYXDXKUxsxR/LkJV4p2olMZn97L/J8Omjikr1zq7YXqlZGhpq7gwMq7P9TJHNxjfdLw8K/wErR3+1xsXyCteGcdQt8OUuqd6TiTmiI/RRVXpgFVtQfYu58+i/h77IvcI3EhTmUeZAO8tjgPtcfIMr25EkVQrntiZd11J2v/2slduCXLE4XvL+OE8obSJKdEHwSQ5ea4B4pB2nJKjfzUfxCI7ya+k8XYzo+UGmpfMc2SOqIgP7d2qGxYX2hEbZDcAHZWSJCeJKHl+eEnQYhbDkYSf/y8JOlTj2zZMxv86jvRN3EL4axkiSMPPuA6qBbHbbSR9hW/LCuirhSqWjRn8uzeyo1SZhBPW4CnLMIvWEXeuoTsJ4RnxM0Ldtn8DDKs80gyEFfNzhO2HkfrWnnmtoT3Z/yOYC0mOx2/xo7627jGQHT1sn2JFEOd/+YWdx+uFBv2n1jC8j/MAl32yw0tUiSXh+sik81HIwaHjwyEbC3aK7Enpvh7acIVwU1hLYVxhrflDZLwRlIwlfWA0zfbjk/LVWkrkYAb4aQh25wspkZ8qeR4kY4n6PqtsxL+hVFE9zPeL/4lLg3kXFeWH69uSzQKLlzslkTTCAdNdv0eFulFCq7qDOsbLv0D/RbBOwtlOfc0455z85b89/BxEjiRgrGdVBZPvQO/ASd4=",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{config-rest}}/v1.0/token/details",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{config-rest}}",
+									"path": [
+										"v1.0",
+										"token",
+										"details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve tenants for email",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-email",
+										"value": "{{email}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{config-rest}}/v1.0/token/tenants",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{config-rest}}",
+									"path": [
+										"v1.0",
+										"token",
+										"tenants"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Nodes",
 					"item": [
 						{
@@ -9541,7 +9663,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"MaxResults\": 50,\r\n    \"ContinuationToken\": \"\",\r\n    \"Filters\": [\r\n        {\r\n            \"Field\": \"ObjectKey\",\r\n            \"Condition\": \"IsNotNull\",\r\n            \"Value\": \"\"\r\n        }\r\n    ],\r\n    \"Ordering\": \"CreatedAscending\"\r\n}",
+									"raw": "{\r\n    \"MaxResults\": 2,\r\n    \"Skip\": 1,   \r\n    \"ContinuationToken\": \"\", \r\n    \"Ordering\": \"CreatedAscending\",\r\n    \"Filters\": [\r\n        {\r\n            \"Field\": \"ObjectKey\",\r\n            \"Condition\": \"IsNotNull\",\r\n            \"Value\": \"\"\r\n        }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9585,7 +9707,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"MaxResults\": 10,\r\n    \"ContinuationToken\": \"\",\r\n    \"Ordering\": \"CreatedDescending\",\r\n    \"Filter\": {\r\n        \"CreatedAfter\": \"2024-01-01 00:00:00.000000\",\r\n        \"CreatedBefore\": \"2025-01-01 00:00:00.000000\",\r\n        \"Terms\": [\r\n            \"file\"\r\n        ],\r\n        \"MimeTypes\": [\r\n            \"application/json\",\r\n            \"application/xml\"\r\n        ],\r\n        \"Prefixes\": [\r\n        ],\r\n        \"Suffixes\": [\r\n            \"json\"\r\n        ],\r\n        \"SchemaFilters\": [\r\n        ]\r\n    }\r\n}",
+									"raw": "{\r\n    \"MaxResults\": 2,\r\n    \"Skip\": 1,\r\n    \"ContinuationToken\": \"\",\r\n    \"Ordering\": \"CreatedDescending\",\r\n    \"Filter\": {\r\n        \"CreatedAfter\": \"2024-01-01 00:00:00.000000\",\r\n        \"CreatedBefore\": \"2025-01-01 00:00:00.000000\",\r\n        \"Terms\": [\r\n            \"foo\"\r\n        ],\r\n        \"MimeTypes\": [\r\n        ],\r\n        \"Prefixes\": [\r\n        ],\r\n        \"Suffixes\": [\r\n        ],\r\n        \"SchemaFilters\": [\r\n        ]\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9629,7 +9751,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"MaxResults\": 10,\r\n    \"ContinuationToken\": \"\",\r\n    \"Ordering\": \"CreatedDescending\",\r\n    \"Filter\": {\r\n        \"CreatedAfter\": \"2024-01-01 00:00:00.000000\",\r\n        \"CreatedBefore\": \"2025-01-01 00:00:00.000000\",\r\n        \"Terms\": [\r\n            \"node\"\r\n        ],\r\n        \"MimeTypes\": [\r\n            \"application/json\"\r\n        ],\r\n        \"Prefixes\": [\r\n            \"sample\"\r\n        ],\r\n        \"Suffixes\": [\r\n            \"json\"\r\n        ],\r\n        \"SchemaFilters\": [\r\n            {\r\n                \"Property\": \"Message\",\r\n                \"Condition\": \"Exists\",\r\n                \"Value\": null\r\n            }\r\n        ]\r\n    }\r\n}",
+									"raw": "{\r\n    \"MaxResults\": 2,\r\n    \"Skip\": 1,\r\n    \"ContinuationToken\": \"\",\r\n    \"Ordering\": \"CreatedDescending\",\r\n    \"Filter\": {\r\n        \"CreatedAfter\": \"2024-01-01 00:00:00.000000\",\r\n        \"CreatedBefore\": \"2025-01-01 00:00:00.000000\",\r\n        \"Terms\": [\r\n            \"foo\"\r\n        ],\r\n        \"MimeTypes\": [\r\n        ],\r\n        \"Prefixes\": [\r\n        ],\r\n        \"Suffixes\": [\r\n        ],\r\n        \"SchemaFilters\": [\r\n        ]\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10776,8 +10898,7 @@
 		{
 			"key": "hostname",
 			"value": "localhost",
-			"type": "string",
-			"disabled": true
+			"type": "string"
 		},
 		{
 			"key": "hostname",
@@ -10788,7 +10909,8 @@
 		{
 			"key": "hostname",
 			"value": "viewdemo",
-			"type": "string"
+			"type": "string",
+			"disabled": true
 		},
 		{
 			"key": "accesskey",
