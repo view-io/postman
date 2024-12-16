@@ -8201,6 +8201,59 @@
 			"name": "Processor",
 			"item": [
 				{
+					"name": "Logs",
+					"item": [
+						{
+							"name": "Retrieve request log file",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/dataflows/logs/1778749f-a1a8-44db-b777-43784336c917",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"dataflows",
+										"logs",
+										"1778749f-a1a8-44db-b777-43784336c917"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve request performance data",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/dataflows/performance/1778749f-a1a8-44db-b777-43784336c917",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"dataflows",
+										"performance",
+										"1778749f-a1a8-44db-b777-43784336c917"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Processing pipeline (storage)",
 					"request": {
 						"method": "POST",
