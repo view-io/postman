@@ -7,6 +7,230 @@
 	},
 	"item": [
 		{
+			"name": "Healthcheck",
+			"item": [
+				{
+					"name": "Switchboard",
+					"request": {
+						"method": "HEAD",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{rest}}/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{rest}}",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Config",
+					"request": {
+						"method": "HEAD",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{rest}}/healthcheck/config",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{rest}}",
+							"path": [
+								"healthcheck",
+								"config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Storage",
+					"request": {
+						"method": "HEAD",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{rest}}/healthcheck/storage-rest",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{rest}}",
+							"path": [
+								"healthcheck",
+								"storage-rest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vector",
+					"request": {
+						"method": "HEAD",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{rest}}/healthcheck/vector",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{rest}}",
+							"path": [
+								"healthcheck",
+								"vector"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Processor",
+					"request": {
+						"method": "HEAD",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{rest}}/healthcheck/processor",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{rest}}",
+							"path": [
+								"healthcheck",
+								"processor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assistant",
+					"request": {
+						"method": "HEAD",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{rest}}/healthcheck/assistant",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{rest}}",
+							"path": [
+								"healthcheck",
+								"assistant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Orchestrator",
+					"request": {
+						"method": "HEAD",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{rest}}/healthcheck/orchestrator",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{rest}}",
+							"path": [
+								"healthcheck",
+								"orchestrator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crawler",
+					"request": {
+						"method": "HEAD",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{rest}}/healthcheck/crawler",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{rest}}",
+							"path": [
+								"healthcheck",
+								"crawler"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lexi",
+					"request": {
+						"method": "HEAD",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{rest}}/healthcheck/lexi",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{rest}}",
+							"path": [
+								"healthcheck",
+								"lexi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Embeddings",
+					"request": {
+						"method": "HEAD",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{rest}}/healthcheck/embeddings",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{rest}}",
+							"path": [
+								"healthcheck",
+								"embeddings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Director",
+					"request": {
+						"method": "HEAD",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{rest}}/healthcheck/director",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{rest}}",
+							"path": [
+								"healthcheck",
+								"director"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Configuration",
 			"item": [
 				{
