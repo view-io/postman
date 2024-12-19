@@ -336,13 +336,75 @@
 							"response": []
 						},
 						{
+							"name": "Generate administrator token (using password)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-email",
+										"value": "{{admin-email}}",
+										"type": "text"
+									},
+									{
+										"key": "x-password",
+										"value": "{{admin-password}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/token",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate administrator token (using password SHA-256)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-email",
+										"value": "{{admin-email}}",
+										"type": "text"
+									},
+									{
+										"key": "x-password-sha256",
+										"value": "{{admin-password-sha256}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/token",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Validate authentication token",
 							"request": {
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-token",
-										"value": "mXCNtMWDsW0/pr+IwRFUjTSriRPB6Pdef3zNGoB/JI8U7bqAeNZhytu/bvgPcNp3A+0NzE+3C8PnaqxOHBsEk3hxUcxSbU6aFJvfuXeP7NmQ3FE1ALdCajUP5zeIZAO7JwLH3Jlu0IBpFln+sz6Vxob4DVW2FPxTrOk+vMoXRToL6fs/uVHHuVuo1z6G2/qJvmgcVcqgivnpMR3HtHWQ8SFsBausz0ZIQPCdGeba9NlFyLBgXhydKe28WUBniZVZtC8NEe7CwsdonKLajia7oQ==",
+										"value": "mXCNtMWDsW0/pr+IwRFUjeDO2cbVr5o4WlPplku8dbpYzqXbeV0c5ofMbX/YiOhMzPSr1DRg/PyE25KpaGzto0+uchyYY2jGJvlj7I/nSFmqlMEsXYy73LsvYjG4tSlimGN60Hj51mmvdaieE8BOVStYfehip+tEXiELfP7tXX6N6EIFAyCQZRWtRoKkXK+DZoY265roa6TwGehPTz4n4vrKb3XwrWzAWOl/pb6G+t3+P/oa52JqKojKT1wB+sLJ8sjzJpalYuQzLEOcK5Nwyw==",
 										"type": "text"
 									}
 								],
@@ -654,25 +716,23 @@
 							"name": "Write",
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
+									"type": "noauth"
 								},
 								"method": "PUT",
 								"header": [
 									{
 										"key": "content-type",
 										"value": "application/json"
+									},
+									{
+										"key": "x-token",
+										"value": "mXCNtMWDsW0/pr+IwRFUjW+MHm63U2KQfhPiavyaXgAcC5DCS2JjHbQLl3sBqiSojkwtrg8yhc5jvahj1UzAIKpYpkwrJ0nT6PAkzOuceBw2O12dhK+SA0+hCV+P3m/eG2eReJ47dewHHT5EFIEum3JdM6KRkQeip3atgInhy2R/BEt7E09gki1Pe6QDsovR8Jl3lxG6Q3EMQbTcNkQOgE0b2laHdQeddX9xluzujAgcSN16R5dvT4p5tFCoBOrdvTYddqXDyiZ5TgRY8Jjwvg==",
+										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Name\": \"My tenant\",\r\n    \"DefaultPoolGUID\": \"default\",\r\n    \"S3BaseDomain\": \"localhost\",\r\n    \"RestBaseDomain\": \"localhost\"\r\n}"
+									"raw": "{\r\n    \"AccountGUID\": \"default\",\r\n    \"Name\": \"My tenant\",\r\n    \"DefaultPoolGUID\": \"default\",\r\n    \"S3BaseDomain\": \"localhost\",\r\n    \"RestBaseDomain\": \"localhost\"\r\n}"
 								},
 								"url": {
 									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants",
@@ -6783,7 +6843,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/6cb7f698-c506-4d0a-a2e8-984007ed733e/",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/example-data-bucket",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -6794,8 +6854,7 @@
 										"tenants",
 										"{{tenant-guid}}",
 										"buckets",
-										"6cb7f698-c506-4d0a-a2e8-984007ed733e",
-										""
+										"example-data-bucket"
 									]
 								}
 							},
@@ -8067,6 +8126,61 @@
 									"query": [
 										{
 											"key": "tags",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reprocess Object",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "AWS4-HMAC-SHA256 Credential=default/20130524/us-east-1/s3/aws4_request, SignedHeaders=host;range;x-amz-date, Signature=fe5f80f77d5fa3beca038a248ff027d0445342fe2855ddc963176630326f1024"
+									},
+									{
+										"key": "Content-Type",
+										"value": "text/plain",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/example-data-bucket/objects/1.pdf?reprocess",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{storage-rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"buckets",
+										"example-data-bucket",
+										"objects",
+										"1.pdf"
+									],
+									"query": [
+										{
+											"key": "reprocess",
 											"value": null
 										}
 									]
@@ -10994,6 +11108,93 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Director",
+			"item": [
+				{
+					"name": "List Connections",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-token",
+								"value": "mXCNtMWDsW0/pr+IwRFUjeDO2cbVr5o4WlPplku8dbpYzqXbeV0c5ofMbX/YiOhMzPSr1DRg/PyE25KpaGzto0+uchyYY2jGJvlj7I/nSFmqlMEsXYy73LsvYjG4tSlimGN60Hj51mmvdaieE8BOVStYfehip+tEXiELfP7tXX6N6EIFAyCQZRWtRoKkXK+DZoY265roa6TwGehPTz4n4vrKb3XwrWzAWOl/pb6G+t3+P/oa52JqKojKT1wB+sLJ8sjzJpalYuQzLEOcK5Nwyw==",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Model\": \"all-MiniLM-L6-v2\",\r\n    \"ApiKey\": \"\",\r\n    \"Contents\": [\r\n        \"This is a sample chunk of text, hello!\",\r\n        \"Oh wow, here's another chunk of text\",\r\n        \"And yet again, a third chunk of text\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{director-rest}}/v1.0/connections",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{director-rest}}",
+							"path": [
+								"v1.0",
+								"connections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate Embeddings",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Model\": \"all-MiniLM-L6-v2\",\r\n    \"ApiKey\": \"\",\r\n    \"Contents\": [\r\n        \"This is a sample chunk of text, hello!\",\r\n        \"Oh wow, here's another chunk of text\",\r\n        \"And yet again, a third chunk of text\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{director-rest}}/v1.0/tenants/default/embeddings/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{director-rest}}",
+							"path": [
+								"v1.0",
+								"tenants",
+								"default",
+								"embeddings",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -11104,6 +11305,21 @@
 		{
 			"key": "password-sha256",
 			"value": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+			"type": "string"
+		},
+		{
+			"key": "admin-email",
+			"value": "admin@view.io",
+			"type": "string"
+		},
+		{
+			"key": "admin-password",
+			"value": "viewadmin",
+			"type": "string"
+		},
+		{
+			"key": "admin-password-sha256",
+			"value": "e75255193871e245472533552fe45dfda25768d26e9eb92507e75263e90c6a48",
 			"type": "string"
 		}
 	]
