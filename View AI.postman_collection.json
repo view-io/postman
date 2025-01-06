@@ -940,7 +940,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/blobs/default",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/blobs/195f961a-adea-4350-8dfc-11c1cd71315f",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -951,7 +951,7 @@
 										"tenants",
 										"default",
 										"blobs",
-										"default"
+										"195f961a-adea-4350-8dfc-11c1cd71315f"
 									]
 								}
 							},
@@ -973,7 +973,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/blobs/4918780c-d94f-4bbd-ba46-5367fe56845c?incldata",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/blobs/195f961a-adea-4350-8dfc-11c1cd71315f?incldata",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -984,13 +984,47 @@
 										"tenants",
 										"default",
 										"blobs",
-										"4918780c-d94f-4bbd-ba46-5367fe56845c"
+										"195f961a-adea-4350-8dfc-11c1cd71315f"
 									],
 									"query": [
 										{
 											"key": "incldata",
 											"value": null
 										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read public BLOB",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/blobs/public/059ea5dc-b045-487b-a819-600fee6d900b",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"blobs",
+										"public",
+										"059ea5dc-b045-487b-a819-600fee6d900b"
 									]
 								}
 							},
@@ -9292,6 +9326,28 @@
 					"item": [
 						{
 							"name": "Retrieve all",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/collections",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"collections"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Enumerate",
 							"request": {
 								"method": "GET",
 								"header": [],
