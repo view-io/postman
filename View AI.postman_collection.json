@@ -1072,6 +1072,48 @@
 							"response": []
 						},
 						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ContentType\": \"text/plain\",\r\n    \"Name\": \"helloworld.txt\",\r\n    \"Description\": \"A text file containing 'Hello, world, yet again!'\",\r\n    \"RefObjType\": \"[usermanaged]\",\r\n    \"RefObjGUID\": \"[usermanaged]\",\r\n    \"Data\": \"SGVsbG8sIHdvcmxkLCB5ZXQgYWdhaW4h\"\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/blobs/195f961a-adea-4350-8dfc-11c1cd71315f",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"blobs",
+										"195f961a-adea-4350-8dfc-11c1cd71315f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Delete",
 							"request": {
 								"auth": {
