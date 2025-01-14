@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "6bda017f-0ad6-46f9-b243-9ab196084432",
+		"_postman_id": "cdd5b381-7c8d-4d22-be69-ac81a1e298d5",
 		"name": "View AI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31392148"
+		"_exporter_id": "720438"
 	},
 	"item": [
 		{
@@ -6937,6 +6937,58 @@
 							"response": []
 						},
 						{
+							"name": "Get Bucket Statistics",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "AWS4-HMAC-SHA256 Credential=default/20130524/us-east-1/s3/aws4_request, SignedHeaders=host;range;x-amz-date, Signature=fe5f80f77d5fa3beca038a248ff027d0445342fe2855ddc963176630326f1024",
+										"disabled": true
+									},
+									{
+										"key": "Authentication",
+										"value": "ubuntu",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/example-data-bucket/stats",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{storage-rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"buckets",
+										"example-data-bucket",
+										"stats"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Retrieve Metadata",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -10995,19 +11047,18 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/default/assistant/configs/3df98b16-8723-4fac-b741-066ad108f9bf",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/configs",
 									"protocol": "{{protocol}}",
 									"host": [
-										"localhost"
+										"{{hostname}}"
 									],
-									"port": "8331",
+									"port": "{{rest}}",
 									"path": [
 										"v1.0",
 										"tenants",
-										"default",
+										"{{tenant-guid}}",
 										"assistant",
-										"configs",
-										"3df98b16-8723-4fac-b741-066ad108f9bf"
+										"configs"
 									]
 								}
 							},
@@ -11019,16 +11070,16 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/default/assistant/configs/3df98b16-8723-4fac-b741-066ad108f9bf",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/configs/3df98b16-8723-4fac-b741-066ad108f9bf",
 									"protocol": "{{protocol}}",
 									"host": [
-										"localhost"
+										"{{hostname}}"
 									],
-									"port": "8331",
+									"port": "{{rest}}",
 									"path": [
 										"v1.0",
 										"tenants",
-										"default",
+										"{{tenant-guid}}",
 										"assistant",
 										"configs",
 										"3df98b16-8723-4fac-b741-066ad108f9bf"
@@ -11043,16 +11094,16 @@
 								"method": "HEAD",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/default/assistant/configs/a6a2ce35-4d90-4f54-adb7-8c9e05b044aa",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/configs/a6a2ce35-4d90-4f54-adb7-8c9e05b044aa",
 									"protocol": "{{protocol}}",
 									"host": [
-										"localhost"
+										"{{hostname}}"
 									],
-									"port": "8331",
+									"port": "{{rest}}",
 									"path": [
 										"v1.0",
 										"tenants",
-										"default",
+										"{{tenant-guid}}",
 										"assistant",
 										"configs",
 										"a6a2ce35-4d90-4f54-adb7-8c9e05b044aa"
@@ -11076,16 +11127,16 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/default/assistant/configs",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/configs",
 									"protocol": "{{protocol}}",
 									"host": [
-										"localhost"
+										"{{hostname}}"
 									],
-									"port": "8331",
+									"port": "{{rest}}",
 									"path": [
 										"v1.0",
 										"tenants",
-										"default",
+										"{{tenant-guid}}",
 										"assistant",
 										"configs"
 									]
@@ -11108,16 +11159,16 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/default/assistant/configs/46092fc8-6e80-4d43-9204-f4db48d562f5",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/configs/46092fc8-6e80-4d43-9204-f4db48d562f5",
 									"protocol": "{{protocol}}",
 									"host": [
-										"localhost"
+										"{{hostname}}"
 									],
-									"port": "8331",
+									"port": "{{rest}}",
 									"path": [
 										"v1.0",
 										"tenants",
-										"default",
+										"{{tenant-guid}}",
 										"assistant",
 										"configs",
 										"46092fc8-6e80-4d43-9204-f4db48d562f5"
@@ -11132,16 +11183,16 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/default/assistant/configs/e6ac142e-31f3-4993-bf9d-adaf4c96a4a8",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/configs/e6ac142e-31f3-4993-bf9d-adaf4c96a4a8",
 									"protocol": "{{protocol}}",
 									"host": [
-										"localhost"
+										"{{hostname}}"
 									],
-									"port": "8331",
+									"port": "{{rest}}",
 									"path": [
 										"v1.0",
 										"tenants",
-										"default",
+										"{{tenant-guid}}",
 										"assistant",
 										"configs",
 										"e6ac142e-31f3-4993-bf9d-adaf4c96a4a8"
@@ -11182,7 +11233,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/assistant/chat/9e7ce7eb-78ab-47ca-a79b-4faedfafb69c",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/chat/9e7ce7eb-78ab-47ca-a79b-4faedfafb69c",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -11191,7 +11242,7 @@
 									"path": [
 										"v1.0",
 										"tenants",
-										"default",
+										"{{tenant-guid}}",
 										"assistant",
 										"chat",
 										"9e7ce7eb-78ab-47ca-a79b-4faedfafb69c"
@@ -11227,7 +11278,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/assistant/rag/chat",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/rag/chat",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -11236,7 +11287,7 @@
 									"path": [
 										"v1.0",
 										"tenants",
-										"default",
+										"{{tenant-guid}}",
 										"assistant",
 										"rag",
 										"chat"
@@ -11272,7 +11323,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/assistant/rag",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/rag",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -11281,7 +11332,7 @@
 									"path": [
 										"v1.0",
 										"tenants",
-										"default",
+										"{{tenant-guid}}",
 										"assistant",
 										"rag"
 									]
@@ -11304,7 +11355,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/assistant/chat/completions",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/chat/completions",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -11313,7 +11364,7 @@
 									"path": [
 										"v1.0",
 										"tenants",
-										"default",
+										"{{tenant-guid}}",
 										"assistant",
 										"chat",
 										"completions"
@@ -11342,7 +11393,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/assistant/models",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/models",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -11351,7 +11402,7 @@
 									"path": [
 										"v1.0",
 										"tenants",
-										"default",
+										"{{tenant-guid}}",
 										"assistant",
 										"models"
 									]
@@ -11374,7 +11425,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/assistant/models/pull",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/models/pull",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -11383,7 +11434,7 @@
 									"path": [
 										"v1.0",
 										"tenants",
-										"default",
+										"{{tenant-guid}}",
 										"assistant",
 										"models",
 										"pull"
@@ -11407,7 +11458,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/assistant/models/delete",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/models/delete",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -11416,7 +11467,7 @@
 									"path": [
 										"v1.0",
 										"tenants",
-										"default",
+										"{{tenant-guid}}",
 										"assistant",
 										"models",
 										"delete"
