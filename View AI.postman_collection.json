@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "4ffbcfb4-af7d-4e6c-9c91-acb159563ca5",
+		"_postman_id": "6bda017f-0ad6-46f9-b243-9ab196084432",
 		"name": "View AI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "720438"
+		"_exporter_id": "31392148"
 	},
 	"item": [
 		{
@@ -10987,223 +10987,445 @@
 			"name": "Assistant",
 			"item": [
 				{
-					"name": "RAG (local)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "text/event-stream",
-								"type": "text",
-								"disabled": true
+					"name": "Configs",
+					"item": [
+						{
+							"name": "List All Configs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/default/assistant/configs/3df98b16-8723-4fac-b741-066ad108f9bf",
+									"protocol": "{{protocol}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8331",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"assistant",
+										"configs",
+										"3df98b16-8723-4fac-b741-066ad108f9bf"
+									]
+								}
 							},
-							{
-								"key": "Cache-Control",
-								"value": "no-cache",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"Question\": \"What information do you have?\",\n    \"EmbeddingModel\": \"sentence-transformers/all-MiniLM-L6-v2\",\n    \"MaxResults\": 10,\n    \"VectorDatabaseName\": \"vectordb\",\n    \"VectorDatabaseTable\": \"minilm\",\n    \"VectorDatabaseHostname\": \"pgvector\",\n    \"VectorDatabasePort\": 5432,\n    \"VectorDatabaseUser\": \"postgres\",\n    \"VectorDatabasePassword\": \"password\",\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"GenerationModel\": \"llama3.1:8b\",\n    \"HuggingFaceApiKey\": \"\",\n    \"Temperature\": 0.1,\n    \"MaxTokens\": 75,\n    \"Stream\": \"True\",\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"TopP\": 0.95,\n    \"PromptPrefix\": \"Use the following pieces of context to answer the question at the end; if the context is not enough for you to answer the question, please politely explain that you don't have relevant context, don't try to make up an answer.\",\n    \"ContextSort\": \"True\",\n    \"SortByMaxSimilarity\": \"True\",\n    \"ContextScope\": 0,\n    \"Rerank\": \"False\",\n    \"RerankModel\": \"cross-encoder/ms-marco-MiniLM-L-6-v2\",\n    \"RerankTopK\": 5\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"response": []
 						},
-						"url": {
-							"raw": "{{protocol}}://viewdemo:{{rest}}/v1.0/tenants/default/assistant/rag",
-							"protocol": "{{protocol}}",
-							"host": [
-								"viewdemo"
-							],
-							"port": "{{rest}}",
-							"path": [
-								"v1.0",
-								"tenants",
-								"default",
-								"assistant",
-								"rag"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "RAG (OpenAI)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "text/event-stream",
-								"type": "text",
-								"disabled": true
+						{
+							"name": "Retrieve Config",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/default/assistant/configs/3df98b16-8723-4fac-b741-066ad108f9bf",
+									"protocol": "{{protocol}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8331",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"assistant",
+										"configs",
+										"3df98b16-8723-4fac-b741-066ad108f9bf"
+									]
+								}
 							},
-							{
-								"key": "Cache-Control",
-								"value": "no-cache",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"Question\": \"What information do you have?\",\n    \"EmbeddingModel\": \"sentence-transformers/all-MiniLM-L6-v2\",\n    \"MaxResults\": 10,\n    \"VectorDatabaseName\": \"vectordb\",\n    \"VectorDatabaseTable\": \"minilm\",\n    \"VectorDatabaseHostname\": \"localhost\",\n    \"VectorDatabasePort\": 5432,\n    \"VectorDatabaseUser\": \"postgres\",\n    \"VectorDatabasePassword\": \"password\",\n    \"GenerationProvider\": \"openai\",\n    \"GenerationApiKey\": \"\",\n    \"GenerationModel\": \"gpt-3.5-turbo-instruct\",\n    \"HuggingFaceApiKey\": \"\",\n    \"Temperature\": 0.1,\n    \"MaxTokens\": 75,\n    \"Stream\": \"True\",\n    \"OllamaHostname\": \"localhost\",\n    \"OllamaPort\": 11434\n}\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"response": []
 						},
-						"url": {
-							"raw": "{{protocol}}://viewdemo:{{rest}}/v1.0/tenants/default/assistant/rag/",
-							"protocol": "{{protocol}}",
-							"host": [
-								"viewdemo"
-							],
-							"port": "{{rest}}",
-							"path": [
-								"v1.0",
-								"tenants",
-								"default",
-								"assistant",
-								"rag",
-								""
-							]
+						{
+							"name": "Check Config Existence",
+							"request": {
+								"method": "HEAD",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/default/assistant/configs/a6a2ce35-4d90-4f54-adb7-8c9e05b044aa",
+									"protocol": "{{protocol}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8331",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"assistant",
+										"configs",
+										"a6a2ce35-4d90-4f54-adb7-8c9e05b044aa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Write Config",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Name\": \"Basic RAG Assistant\",\n    \"Description\": \"uses qwen2.5:7b - ollama\",\n    \"SystemPrompt\": \"Use the provided context to answer questions.\",\n    \"EmbeddingModel\": \"sentence-transformers/all-MiniLM-L6-v2\",\n    \"MaxResults\": 10,\n    \"VectorDatabaseName\": \"vectordb\",\n    \"VectorDatabaseTable\": \"minilm\",\n    \"VectorDatabaseHostname\": \"pgvector\",\n    \"VectorDatabasePort\": 5432,\n    \"VectorDatabaseUser\": \"postgres\",\n    \"VectorDatabasePassword\": \"password\",\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"GenerationModel\": \"qwen2.5:7b\",\n    \"HuggingFaceApiKey\": \"\",\n    \"Temperature\": 0.1,\n    \"TopP\": 0.95,\n    \"MaxTokens\": 500,\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"ContextSort\": true,\n    \"SortByMaxSimilarity\": true,\n    \"ContextScope\": 0,\n    \"Rerank\": true,\n    \"RerankModel\": \"cross-encoder/ms-marco-MiniLM-L-6-v2\",\n    \"RerankTopK\": 3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/default/assistant/configs",
+									"protocol": "{{protocol}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8331",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"assistant",
+										"configs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Config",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Name\": \"Updated RAG Assistant\",\n    \"Description\": \"uses qwen2.5:7b - ollama\",\n    \"SystemPrompt\": \"Use the provided context to answer questions.\",\n    \"EmbeddingModel\": \"sentence-transformers/all-MiniLM-L6-v2\",\n    \"MaxResults\": 10,\n    \"VectorDatabaseName\": \"vectordb\",\n    \"VectorDatabaseTable\": \"minilm\",\n    \"VectorDatabaseHostname\": \"pgvector\",\n    \"VectorDatabasePort\": 5432,\n    \"VectorDatabaseUser\": \"postgres\",\n    \"VectorDatabasePassword\": \"password\",\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"GenerationModel\": \"qwen2.5:7b\",\n    \"HuggingFaceApiKey\": \"\",\n    \"Temperature\": 0.1,\n    \"TopP\": 0.95,\n    \"MaxTokens\": 500,\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"ContextSort\": true,\n    \"SortByMaxSimilarity\": true,\n    \"ContextScope\": 0,\n    \"Rerank\": true,\n    \"RerankModel\": \"cross-encoder/ms-marco-MiniLM-L-6-v2\",\n    \"RerankTopK\": 3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/default/assistant/configs/46092fc8-6e80-4d43-9204-f4db48d562f5",
+									"protocol": "{{protocol}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8331",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"assistant",
+										"configs",
+										"46092fc8-6e80-4d43-9204-f4db48d562f5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Config",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/default/assistant/configs/e6ac142e-31f3-4993-bf9d-adaf4c96a4a8",
+									"protocol": "{{protocol}}",
+									"host": [
+										"localhost"
+									],
+									"port": "8331",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"assistant",
+										"configs",
+										"e6ac142e-31f3-4993-bf9d-adaf4c96a4a8"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Chat (local)",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"Question\": \"Tell a very short joke?\",\n    \"ModelName\": \"gemma2:2b\",\n    \"Stream\": \"True\",\n    \"OllamaHostname\": \"localhost\",\n    \"OllamaPort\": 11434\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Chat",
+					"item": [
+						{
+							"name": "Assistant Config Chat",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/event-stream",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"messages\": [ {\"role\": \"user\", \"content\": \"Do you have Q3 luxetech financials?\"},\n                {\"role\": \"assistant\", \"content\": \"Unfortunately I do not have context on any documents related to Q3 luxetech financials.\"},\n                {\"role\": \"user\", \"content\": \"Are you sure you dont have them?\"}\n                ],\n    \"stream\": true\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/assistant/chat/9e7ce7eb-78ab-47ca-a79b-4faedfafb69c",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"assistant",
+										"chat",
+										"9e7ce7eb-78ab-47ca-a79b-4faedfafb69c"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "{{protocol}}://viewdemo:{{rest}}/v1.0/tenants/default/assistant/chat",
-							"protocol": "{{protocol}}",
-							"host": [
-								"viewdemo"
-							],
-							"port": "{{rest}}",
-							"path": [
-								"v1.0",
-								"tenants",
-								"default",
-								"assistant",
-								"chat"
-							]
+						{
+							"name": "RAG Messages",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/event-stream",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Messages\": [ {\"role\": \"user\", \"content\": \"Do you have Q3 luxetech financials?\"},\n                {\"role\": \"assistant\", \"content\": \"Unfortunately I do not have context on any documents related to Q3 luxetech financials.\"},\n                {\"role\": \"user\", \"content\": \"Are you sure you dont have them?\"}\n                ],\n    \"EmbeddingModel\": \"sentence-transformers/all-MiniLM-L6-v2\",\n    \"MaxResults\": 10,\n    \"VectorDatabaseName\": \"vectordb\",\n    \"VectorDatabaseTable\": \"minilm\",\n    \"VectorDatabaseHostname\": \"pgvector\",\n    \"VectorDatabasePort\": 5432,\n    \"VectorDatabaseUser\": \"postgres\",\n    \"VectorDatabasePassword\": \"password\",\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"GenerationModel\": \"qwen2.5:7b\",\n    \"HuggingFaceApiKey\": \"\",\n    \"Temperature\": 0.1,\n    \"MaxTokens\": 75,\n    \"Stream\": false,\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"TopP\": 0.95,\n    \"PromptPrefix\": \"\",\n    \"ContextSort\": true,\n    \"SortByMaxSimilarity\": true,\n    \"ContextScope\": 0,\n    \"Rerank\": false,\n    \"RerankModel\": \"cross-encoder/ms-marco-MiniLM-L-6-v2\",\n    \"RerankTopK\": 5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/assistant/rag/chat",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"assistant",
+										"rag",
+										"chat"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RAG Question (legacy)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/event-stream",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Question\": \"What information do you have?\",\n    \"EmbeddingModel\": \"sentence-transformers/all-MiniLM-L6-v2\",\n    \"MaxResults\": 10,\n    \"VectorDatabaseName\": \"vectordb\",\n    \"VectorDatabaseTable\": \"minilm\",\n    \"VectorDatabaseHostname\": \"pgvector\",\n    \"VectorDatabasePort\": 5432,\n    \"VectorDatabaseUser\": \"postgres\",\n    \"VectorDatabasePassword\": \"password\",\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"GenerationModel\": \"qwen2.5:7b\",\n    \"HuggingFaceApiKey\": \"\",\n    \"Temperature\": 0.1,\n    \"MaxTokens\": 75,\n    \"Stream\": false,\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"TopP\": 0.95,\n    \"PromptPrefix\": \"talk like a pirate\",\n    \"ContextSort\": true,\n    \"SortByMaxSimilarity\": true,\n    \"ContextScope\": 0,\n    \"Rerank\": false,\n    \"RerankModel\": \"cross-encoder/ms-marco-MiniLM-L-6-v2\",\n    \"RerankTopK\": 5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/assistant/rag",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"assistant",
+										"rag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Chat Only Question (legacy)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Question\": \"Tell a very short joke?\",\n    \"ModelName\": \"qwen2.5:7b\",\n    \"Stream\": false,\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/assistant/chat/completions",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"assistant",
+										"chat",
+										"completions"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "List local models",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"OllamaHostname\": \"localhost\",\n    \"OllamaPort\": 11434\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Models",
+					"item": [
+						{
+							"name": "List local models",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"OllamaHostname\": \"localhost\",\n    \"OllamaPort\": 11434\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/assistant/models",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"assistant",
+										"models"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "{{protocol}}://viewdemo:{{rest}}/v1.0/tenants/default/assistant/models",
-							"protocol": "{{protocol}}",
-							"host": [
-								"viewdemo"
-							],
-							"port": "{{rest}}",
-							"path": [
-								"v1.0",
-								"tenants",
-								"default",
-								"assistant",
-								"models"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve model",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"ModelName\": \"llama3.1:latest\",\n    \"OllamaHostname\": \"localhost\",\n    \"OllamaPort\": 11434\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+						{
+							"name": "Retrieve model",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ModelName\": \"llama3.1:latest\",\n    \"OllamaHostname\": \"localhost\",\n    \"OllamaPort\": 11434\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/assistant/models/pull",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"assistant",
+										"models",
+										"pull"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "{{protocol}}://viewdemo:{{rest}}/v1.0/tenants/default/assistant/models/pull",
-							"protocol": "{{protocol}}",
-							"host": [
-								"viewdemo"
-							],
-							"port": "{{rest}}",
-							"path": [
-								"v1.0",
-								"tenants",
-								"default",
-								"assistant",
-								"models",
-								"pull"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete model",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"ModelName\": \"llama3.1:latest\",\n    \"OllamaHostname\": \"localhost\",\n    \"OllamaPort\": 11434\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+						{
+							"name": "Delete model",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ModelName\": \"llama3.1:latest\",\n    \"OllamaHostname\": \"localhost\",\n    \"OllamaPort\": 11434\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/default/assistant/models/delete",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"default",
+										"assistant",
+										"models",
+										"delete"
+									]
 								}
-							}
-						},
-						"url": {
-							"raw": "{{protocol}}://viewdemo:{{rest}}/v1.0/tenants/default/assistant/models/delete",
-							"protocol": "{{protocol}}",
-							"host": [
-								"viewdemo"
-							],
-							"port": "{{rest}}",
-							"path": [
-								"v1.0",
-								"tenants",
-								"default",
-								"assistant",
-								"models",
-								"delete"
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				}
 			]
 		},
