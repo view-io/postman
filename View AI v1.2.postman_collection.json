@@ -9764,6 +9764,38 @@
 							"response": []
 						},
 						{
+							"name": "Retrieve top terms",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/collections/00000000-0000-0000-0000-000000000000/documents/00000000-0000-0000-0000-000000000000/topterms?max-keys=10",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"collections",
+										"00000000-0000-0000-0000-000000000000",
+										"documents",
+										"00000000-0000-0000-0000-000000000000",
+										"topterms"
+									],
+									"query": [
+										{
+											"key": "max-keys",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Exists",
 							"request": {
 								"method": "HEAD",
@@ -10216,6 +10248,54 @@
 										},
 										{
 											"key": "incldata",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search collection and include top terms",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"MaxResults\": 100,\r\n    \"Skip\": 0,\r\n    \"ContinuationToken\": \"\",\r\n    \"Ordering\": \"CreatedDescending\",\r\n    \"Filter\": {\r\n        \"CreatedAfter\": \"2025-01-01 00:00:00.000000\",\r\n        \"CreatedBefore\": \"2026-01-01 00:00:00.000000\",\r\n        \"Terms\": [ \"view\"\r\n        ],\r\n        \"MimeTypes\": [\r\n        ],\r\n        \"Prefixes\": [\r\n        ],\r\n        \"Suffixes\": [\r\n        ],\r\n        \"SchemaFilters\": [\r\n        ]\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/collections/00000000-0000-0000-0000-000000000000/documents?search&incltopterms",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"collections",
+										"00000000-0000-0000-0000-000000000000",
+										"documents"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": null
+										},
+										{
+											"key": "incltopterms",
 											"value": null
 										}
 									]
