@@ -11152,12 +11152,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/configs/00000000-0000-0000-0000-000000000000",
+									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/{{tenant-guid}}/assistant/configs/00000000-0000-0000-0000-000000000000",
 									"protocol": "{{protocol}}",
 									"host": [
-										"{{hostname}}"
+										"localhost"
 									],
-									"port": "{{rest}}",
+									"port": "8331",
 									"path": [
 										"v1.0",
 										"tenants",
@@ -11592,7 +11592,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/threads/0fb9edee-c38b-43a3-b4be-a0d9cd538579",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/threads/00000000-0000-0000-0000-000000000000",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -11604,7 +11604,7 @@
 										"{{tenant-guid}}",
 										"assistant",
 										"threads",
-										"0fb9edee-c38b-43a3-b4be-a0d9cd538579"
+										"00000000-0000-0000-0000-000000000000"
 									]
 								}
 							},
@@ -11681,7 +11681,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/threads/d52ab7ec-db4b-4ff7-bb7d-c6ca64b2bae2/messages",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/threads/00000000-0000-0000-0000-000000000000/messages",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -11693,7 +11693,7 @@
 										"{{tenant-guid}}",
 										"assistant",
 										"threads",
-										"d52ab7ec-db4b-4ff7-bb7d-c6ca64b2bae2",
+										"00000000-0000-0000-0000-000000000000",
 										"messages"
 									]
 								}
@@ -11706,7 +11706,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/threads/f9daf094-07a0-4e86-9302-cc81aa8d6f25",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/threads/00000000-0000-0000-0000-000000000000",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -11718,7 +11718,7 @@
 										"{{tenant-guid}}",
 										"assistant",
 										"threads",
-										"f9daf094-07a0-4e86-9302-cc81aa8d6f25"
+										"00000000-0000-0000-0000-000000000000"
 									]
 								}
 							},
