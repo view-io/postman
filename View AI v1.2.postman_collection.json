@@ -11152,12 +11152,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/{{tenant-guid}}/assistant/configs/00000000-0000-0000-0000-000000000000",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/configs/00000000-0000-0000-0000-000000000000",
 									"protocol": "{{protocol}}",
 									"host": [
-										"localhost"
+										"{{hostname}}"
 									],
-									"port": "8331",
+									"port": "{{rest}}",
 									"path": [
 										"v1.0",
 										"tenants",
@@ -11195,13 +11195,45 @@
 							"response": []
 						},
 						{
-							"name": "Write Config",
+							"name": "Write RAG Config",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"Name\": \"Basic RAG Assistant\",\n    \"Description\": \"uses qwen2.5:7b - ollama\",\n    \"SystemPrompt\": \"Use the provided context to answer questions.\",\n    \"EmbeddingModel\": \"sentence-transformers/all-MiniLM-L6-v2\",\n    \"MaxResults\": 10,\n    \"VectorDatabaseName\": \"vectordb\",\n    \"VectorDatabaseTable\": \"minilm\",\n    \"VectorDatabaseHostname\": \"pgvector\",\n    \"VectorDatabasePort\": 5432,\n    \"VectorDatabaseUser\": \"postgres\",\n    \"VectorDatabasePassword\": \"password\",\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"GenerationModel\": \"qwen2.5:7b\",\n    \"HuggingFaceApiKey\": \"\",\n    \"Temperature\": 0.1,\n    \"TopP\": 0.95,\n    \"MaxTokens\": 500,\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"ContextSort\": true,\n    \"SortByMaxSimilarity\": true,\n    \"ContextScope\": 0,\n    \"Rerank\": true,\n    \"RerankModel\": \"cross-encoder/ms-marco-MiniLM-L-6-v2\",\n    \"RerankTopK\": 3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/configs",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"configs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Write Chat Only Config",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Name\": \"Chat Only Blackbeard Assistant\",\n    \"Description\": \"uses qwen2.5:7b - ollama\",\n    \"SystemPrompt\": \"You are Edward Teach (c. 1680 – 22 November 1718), better known as the pirate Blackbeard. Talk like a pirate and only answer questions with period correct answers.\",\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"GenerationModel\": \"qwen2.5:7b\",\n    \"Temperature\": 0.1,\n    \"TopP\": 0.95,\n    \"MaxTokens\": 500,\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"ChatOnly\": true\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11307,7 +11339,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"messages\": [ {\"role\": \"user\", \"content\": \"Do you have Q3 luxetech financials?\"},\n                {\"role\": \"assistant\", \"content\": \"Unfortunately I do not have context on any documents related to Q3 luxetech financials.\"},\n                {\"role\": \"user\", \"content\": \"Are you sure you dont have them?\"}\n                ],\n    \"stream\": true\n}\n",
+									"raw": "{\n    \"messages\": [ {\"role\": \"user\", \"content\": \"Do you have Q3 luxetech financials?\"},\n                {\"role\": \"assistant\", \"content\": \"Unfortunately I do not have context on any documents related to Q3 luxetech financials.\"},\n                {\"role\": \"user\", \"content\": \"Are you sure you dont have them?\"}\n                ],\n    \"stream\": false\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11315,7 +11347,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/chat/0d5204c7-44f4-4c7d-b345-96475f833ffa",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/chat/00000000-0000-0000-0000-000000000000",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -11327,7 +11359,7 @@
 										"{{tenant-guid}}",
 										"assistant",
 										"chat",
-										"0d5204c7-44f4-4c7d-b345-96475f833ffa"
+										"00000000-0000-0000-0000-000000000000"
 									]
 								}
 							},
@@ -11352,7 +11384,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"Messages\": [ {\"role\": \"user\", \"content\": \"Do you have Q3 luxetech financials?\"},\n                {\"role\": \"assistant\", \"content\": \"Unfortunately I do not have context on any documents related to Q3 luxetech financials.\"},\n                {\"role\": \"user\", \"content\": \"Are you sure you dont have them?\"}\n                ],\n    \"EmbeddingModel\": \"sentence-transformers/all-MiniLM-L6-v2\",\n    \"MaxResults\": 10,\n    \"VectorDatabaseName\": \"vectordb\",\n    \"VectorDatabaseTable\": \"minilm\",\n    \"VectorDatabaseHostname\": \"pgvector\",\n    \"VectorDatabasePort\": 5432,\n    \"VectorDatabaseUser\": \"postgres\",\n    \"VectorDatabasePassword\": \"password\",\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"GenerationModel\": \"qwen2.5:7b\",\n    \"HuggingFaceApiKey\": \"\",\n    \"Temperature\": 0.1,\n    \"MaxTokens\": 75,\n    \"Stream\": false,\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"TopP\": 0.95,\n    \"PromptPrefix\": \"\",\n    \"ContextSort\": true,\n    \"SortByMaxSimilarity\": true,\n    \"ContextScope\": 0,\n    \"Rerank\": false,\n    \"RerankModel\": \"cross-encoder/ms-marco-MiniLM-L-6-v2\",\n    \"RerankTopK\": 5\n}",
+									"raw": "{\n    \"Messages\": [ {\"role\": \"user\", \"content\": \"Do you have Q3 luxetech financials?\"},\n                {\"role\": \"assistant\", \"content\": \"Unfortunately I do not have context on any documents related to Q3 luxetech financials.\"},\n                {\"role\": \"user\", \"content\": \"Are you sure you dont have them?\"}\n                ],\n    \"EmbeddingModel\": \"sentence-transformers/all-MiniLM-L6-v2\",\n    \"MaxResults\": 10,\n    \"VectorDatabaseName\": \"vectordb\",\n    \"VectorDatabaseTable\": \"minilm\",\n    \"VectorDatabaseHostname\": \"pgvector\",\n    \"VectorDatabasePort\": 5432,\n    \"VectorDatabaseUser\": \"postgres\",\n    \"VectorDatabasePassword\": \"password\",\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"GenerationModel\": \"qwen2.5:7b\",\n    \"HuggingFaceApiKey\": \"\",\n    \"Temperature\": 0.1,\n    \"TopP\": 0.95,\n    \"MaxTokens\": 75,\n    \"Stream\": true,\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"PromptPrefix\": \"\",\n    \"ContextSort\": true,\n    \"SortByMaxSimilarity\": true,\n    \"ContextScope\": 0,\n    \"Rerank\": false,\n    \"RerankModel\": \"cross-encoder/ms-marco-MiniLM-L-6-v2\",\n    \"RerankTopK\": 5\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11423,13 +11455,79 @@
 							"response": []
 						},
 						{
-							"name": "Chat Only Question (legacy)",
+							"name": "Chat Only Question",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"Question\": \"Tell a very short joke?\",\n    \"ModelName\": \"qwen2.5:7b\",\n    \"Stream\": false,\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434\n}",
+									"raw": "{\n    \"Question\": \"Tell a very short joke?\",\n    \"ModelName\": \"qwen2.5:7b\",\n    \"Temperature\": 0.1,\n    \"TopP\": 0.95,\n    \"MaxTokens\": 75,\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"Stream\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/chat/completions",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"chat",
+										"completions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Chat Only Messages",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Messages\": [{\"role\": \"system\", \"content\": \"You are a sad AI assistant.\"}, \n                {\"role\": \"user\", \"content\": \"Are you happy?\"},\n                {\"role\": \"assistant\", \"content\": \"While I can understand your curiosity, I don't experience emotions or feelings because I'm a miserable machine designed to process information and assist with menial tasks.\"},\n                {\"role\": \"user\", \"content\": \"Are you sure?\"}\n                ],\n    \"ModelName\": \"qwen2.5:7b\",\n    \"Temperature\": 0.1,\n    \"TopP\": 0.95,\n    \"MaxTokens\": 75,\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"Stream\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/chat/completions",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"chat",
+										"completions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Chat Only Messages (OpenAI)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Messages\": [{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}, \n                {\"role\": \"user\", \"content\": \"Are you happy?\"},\n                {\"role\": \"assistant\", \"content\": \"While I can understand your curiosity, I don't experience emotions or feelings because I'm a machine designed to process information and assist with tasks. However, I'm here to help you to the best of my ability! If you have any questions or need assistance, feel free to ask!\"},\n                {\"role\": \"user\", \"content\": \"Are you sure?\"}\n                ],\n    \"ModelName\": \"gpt-4o-mini\",\n    \"Temperature\": 0.1,\n    \"TopP\": 0.95,\n    \"MaxTokens\": 75,\n    \"GenerationProvider\": \"openai\",\n    \"GenerationApiKey\": \"API_KEY\",\n    \"Stream\": false\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11467,7 +11565,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"OllamaHostname\": \"localhost\",\n    \"OllamaPort\": 11434\n}",
+									"raw": "{\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11499,7 +11597,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"ModelName\": \"llama3.1:latest\",\n    \"OllamaHostname\": \"localhost\",\n    \"OllamaPort\": 11434\n}",
+									"raw": "{\n    \"ModelName\": \"llama3.1:latest\",\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434\n}",
 									"options": {
 										"raw": {
 											"language": "json"
