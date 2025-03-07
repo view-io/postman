@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "cdd5b381-7c8d-4d22-be69-ac81a1e298d5",
+		"_postman_id": "138a7af3-9341-4e54-97a5-ad68f3266f71",
 		"name": "View AI v1.2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "720438"
+		"_exporter_id": "31392148",
+		"_collection_link": "https://view-blake.postman.co/workspace/view-blake-Workspace~4126e904-23e2-422c-9456-1b6cca40b77a/collection/31392148-138a7af3-9341-4e54-97a5-ad68f3266f71?action=share&source=collection_link&creator=31392148"
 	},
 	"item": [
 		{
@@ -11151,12 +11152,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/configs/00000000-0000-0000-0000-000000000000",
+									"raw": "{{protocol}}://localhost:8331/v1.0/tenants/{{tenant-guid}}/assistant/configs/00000000-0000-0000-0000-000000000000",
 									"protocol": "{{protocol}}",
 									"host": [
-										"{{hostname}}"
+										"localhost"
 									],
-									"port": "{{rest}}",
+									"port": "8331",
 									"path": [
 										"v1.0",
 										"tenants",
@@ -11314,7 +11315,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/chat/00000000-0000-0000-0000-000000000000",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/chat/0d5204c7-44f4-4c7d-b345-96475f833ffa",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -11326,7 +11327,7 @@
 										"{{tenant-guid}}",
 										"assistant",
 										"chat",
-										"00000000-0000-0000-0000-000000000000"
+										"0d5204c7-44f4-4c7d-b345-96475f833ffa"
 									]
 								}
 							},
@@ -11558,6 +11559,197 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Chat Threads",
+					"item": [
+						{
+							"name": "List All Chat Threads",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/threads",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"threads"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve Chat Thread",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/threads/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"threads",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check Chat Thread Existence",
+							"request": {
+								"method": "HEAD",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/threads/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"threads",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Write Chat Thread",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Title\": \"Test Chat Thread\",\n  \"Description\": \"A test chat thread for development\",\n  \"Messages\": [\n    {\n        \"role\": \"user\",\n        \"content\": \"What is the capital of France?\",\n        \"metadata\": {\n            \"source\": \"web interface\",\n            \"client_timestamp\": \"2024-02-17T10:30:00Z\"\n        }\n    }\n  ],\n  \"AssistantConfigGUID\": \"12345678-1234-5678-1234-567812345678\",\n  \"Metadata\": {\n    \"tags\": [\"test\", \"development\"],\n    \"category\": \"testing\"\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/threads",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"threads"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Append Chat Thread",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"role\": \"assistant\",\n  \"content\": \"The capital of France is Paris.\",\n  \"metadata\": {\n    \"source_documents\": [\n      {\n        \"content\": \"Paris is the capital and largest city of France.\",\n        \"similarity\": 0.89\n      }\n    ],\n    \"generation_metrics\": {\n      \"tokens\": 8,\n      \"generation_time\": 0.5\n    }\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/threads/00000000-0000-0000-0000-000000000000/messages",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"threads",
+										"00000000-0000-0000-0000-000000000000",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Chat Thread",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/threads/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"threads",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
