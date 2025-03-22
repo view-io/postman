@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "76f65e6d-58fc-43de-8a92-1be22c6c65eb",
+		"_postman_id": "adeb1806-a2a1-47fd-a23a-1a85a6689def",
 		"name": "View AI v1.2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "720438"
+		"_exporter_id": "31392148",
+		"_collection_link": "https://view-blake.postman.co/workspace/view-blake-Workspace~4126e904-23e2-422c-9456-1b6cca40b77a/collection/31392148-adeb1806-a2a1-47fd-a23a-1a85a6689def?action=share&source=collection_link&creator=31392148"
 	},
 	"item": [
 		{
@@ -11642,109 +11643,6 @@
 					]
 				},
 				{
-					"name": "Models",
-					"item": [
-						{
-							"name": "List local models",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"OllamaHostname\": \"192.168.86.250\",\n    \"OllamaPort\": 11434\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/models",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"assistant",
-										"models"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve model",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"ModelName\": \"llama3.1:latest\",\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/models/pull",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"assistant",
-										"models",
-										"pull"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete model",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"ModelName\": \"llama3.1:latest\",\n    \"OllamaHostname\": \"localhost\",\n    \"OllamaPort\": 11434\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/models/delete",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"assistant",
-										"models",
-										"delete"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
 					"name": "Chat Threads",
 					"item": [
 						{
@@ -11903,6 +11801,175 @@
 										"assistant",
 										"threads",
 										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Models",
+					"item": [
+						{
+							"name": "List local models",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"OllamaHostname\": \"astra\",\n    \"OllamaPort\": 11400\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/models",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"models"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve model",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ModelName\": \"llama3.1:latest\",\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/models/pull",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"models",
+										"pull"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete model",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ModelName\": \"llama3.1:latest\",\n    \"OllamaHostname\": \"localhost\",\n    \"OllamaPort\": 11434\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/models/delete",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"models",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Preload Model",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ModelName\": \"qwen2.5:7b\",\n    \"OllamaHostname\": \"localhost\",\n    \"OllamaPort\": 11434\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/models/load",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"models",
+										"load"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Unload Model",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ModelName\": \"qwen2.5:7b\",\n    \"OllamaHostname\": \"localhost\",\n    \"OllamaPort\": 11434,\n    \"Unload\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/models/load",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"models",
+										"load"
 									]
 								}
 							},
