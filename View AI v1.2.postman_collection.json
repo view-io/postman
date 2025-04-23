@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "adeb1806-a2a1-47fd-a23a-1a85a6689def",
+		"_postman_id": "a9d956a5-d269-447f-9b76-09afa519a8fe",
 		"name": "View AI v1.2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "31392148",
-		"_collection_link": "https://view-blake.postman.co/workspace/view-blake-Workspace~4126e904-23e2-422c-9456-1b6cca40b77a/collection/31392148-adeb1806-a2a1-47fd-a23a-1a85a6689def?action=share&source=collection_link&creator=31392148"
+		"_collection_link": "https://view-blake.postman.co/workspace/view-blake-Workspace~4126e904-23e2-422c-9456-1b6cca40b77a/collection/31392148-a9d956a5-d269-447f-9b76-09afa519a8fe?action=share&source=collection_link&creator=31392148"
 	},
 	"item": [
 		{
@@ -11970,6 +11970,531 @@
 										"assistant",
 										"models",
 										"load"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Enterprise Desktop",
+			"item": [
+				{
+					"name": "Desktop Users",
+					"item": [
+						{
+							"name": "List All Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/users",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/users/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"users",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check User Existence",
+							"request": {
+								"method": "HEAD",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/users/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"users",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Write User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Name\": \"Desktop User 1\",\n  \"Description\": \"This is a test desktop user\",\n  \"Assistants\": [\n    {\n      \"Name\": \"Chat Preset\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ],\n  \"Buckets\": [\n    {\n      \"Name\": \"Example Bucket\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ],\n  \"Printers\": [\n    {\n      \"Name\": \"Printer\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ],\n  \"Groups\": [\n    {\n      \"Name\": \"Workgroup\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/users",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Name\": \"Desktop User 1\",\n  \"Description\": \"This is an update to a test desktop user\",\n  \"Assistants\": [\n    {\n      \"Name\": \"Chat Preset\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ],\n  \"Buckets\": [\n    {\n      \"Name\": \"Example Bucket\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ],\n  \"Printers\": [\n    {\n      \"Name\": \"Printer\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ],\n  \"Groups\": [\n    {\n      \"Name\": \"Workgroup\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/users/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"users",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/users/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"users",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Desktop Groups",
+					"item": [
+						{
+							"name": "List All Groups",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/groups",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve Group",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/groups/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"groups",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check Group Existence",
+							"request": {
+								"method": "HEAD",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/groups/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"groups",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Write Group",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Name\": \"Desktop Group 1\",\n  \"Description\": \"This is a test desktop group\",\n  \"Assistants\": [\n    {\n      \"Name\": \"Chat Preset\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ],\n  \"Buckets\": [\n    {\n      \"Name\": \"Example Bucket\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ],\n  \"Printers\": [\n    {\n      \"Name\": \"Printer\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ],\n  \"Groups\": [\n    {\n      \"Name\": \"Workgroup\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/groups",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Group",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Name\": \"Desktop Group 2\",\n  \"Description\": \"This is an update to a test desktop group\",\n  \"Assistants\": [\n    {\n      \"Name\": \"Chat Preset\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ],\n  \"Buckets\": [\n    {\n      \"Name\": \"Example Bucket\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ],\n  \"Printers\": [\n    {\n      \"Name\": \"Printer\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ],\n  \"Groups\": [\n    {\n      \"Name\": \"Workgroup\",\n      \"Guid\": \"00000000-0000-0000-0000-000000000000\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/groups/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"groups",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Group",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/groups/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"groups",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Desktop Printers",
+					"item": [
+						{
+							"name": "List All Printers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/printers",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"printers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve Printers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/printers/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"printers",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check Printer Existence",
+							"request": {
+								"method": "HEAD",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/printers/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"printers",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Write Printer",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Name\": \"Desktop Printer 1\",\n    \"Description\": \"This is a test desktop printer\",\n    \"Async\": true,\n    \"Tenant\": {\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"Name\": \"Default Tenant\",\n        \"Region\": \"us-west-1\",\n        \"S3BaseDomain\": \"localhost\",\n        \"DefaultPoolGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"Active\": true\n    },\n    \"Collection\": {\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"Name\": \"My first collection\",\n        \"AllowOverwrites\": true,\n        \"AdditionalData\": \"Created by setup\"\n    },\n    \"Bucket\":{},\n    \"MetadataRule\": {\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"Name\": \"example-metadata-rule\",\n        \"ContentType\": \"*\",\n        \"MaxContentLength\": 16777216,\n        \"DataFlowEndpoint\": \"http://localhost:8501/processor\",\n        \"TypeDetectorEndpoint\": \"http://localhost:8501/processor/typedetector\",\n        \"SemanticCellEndpoint\": \"http://localhost:8341/\",\n        \"MaxChunkContentLength\": 512,\n        \"ShiftSize\": 448,\n        \"UdrEndpoint\": \"http://localhost:8321/\",\n        \"TopTerms\": 25,\n        \"CaseInsensitive\": true,\n        \"IncludeFlattened\": true,\n        \"DataCatalogEndpoint\": \"http://localhost:8201/\",\n        \"DataCatalogType\": \"Lexi\",\n        \"DataCatalogCollection\": \"00000000-0000-0000-0000-000000000000\",\n        \"GraphRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"EmbeddingsRule\": {\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"Name\": \"My storage server embeddings rule\",\n        \"ContentType\": \"*\",\n        \"GraphRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"VectorRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"DataFlowEndpoint\": \"http://localhost:8501/processor\",\n        \"EmbeddingsGenerator\": \"LCProxy\",\n        \"GeneratorUrl\": \"http://localhost:8301/\",\n        \"GeneratorApiKey\": \"\",\n        \"VectorStoreUrl\": \"http://localhost:8311/\",\n        \"MaxContentLength\": 16777216\n    },\n    \"VectorRepository\": {\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"Name\": \"My vector repository\",\n        \"RepositoryType\": \"Pgvector\",\n        \"Model\": \"all-MiniLM-L6-v2\",\n        \"Dimensionality\": 384,\n        \"DatabaseHostname\": \"localhost\",\n        \"DatabaseName\": \"vectordb\",\n        \"DatabaseTable\": \"minilm\",\n        \"DatabasePort\": 5432,\n        \"DatabaseUser\": \"postgres\",\n        \"DatabasePassword\": \"password\"\n    },\n    \"GraphRepository\": {\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"Name\": \"My LiteGraph instance\",\n        \"RepositoryType\": \"LiteGraph\",\n        \"EndpointUrl\": \"http://localhost:8701/\",\n        \"ApiKey\": \"default\",\n        \"GraphIdentifier\": \"00000000-0000-0000-0000-000000000000\"\n    }\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/printers",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"printers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Printer",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Name\": \"Desktop Printer 1\",\n    \"Description\": \"This an update to a test desktop printer\",\n    \"Async\": true,\n    \"Tenant\": {\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"Name\": \"Default Tenant\",\n        \"Region\": \"us-west-1\",\n        \"S3BaseDomain\": \"localhost\",\n        \"DefaultPoolGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"Active\": true\n    },\n    \"Collection\": {\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"Name\": \"My first collection\",\n        \"AllowOverwrites\": true,\n        \"AdditionalData\": \"Created by setup\"\n    },\n    \"Bucket\":{},\n    \"MetadataRule\": {\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"Name\": \"example-metadata-rule\",\n        \"ContentType\": \"*\",\n        \"MaxContentLength\": 16777216,\n        \"DataFlowEndpoint\": \"http://localhost:8501/processor\",\n        \"TypeDetectorEndpoint\": \"http://localhost:8501/processor/typedetector\",\n        \"SemanticCellEndpoint\": \"http://localhost:8341/\",\n        \"MaxChunkContentLength\": 512,\n        \"ShiftSize\": 448,\n        \"UdrEndpoint\": \"http://localhost:8321/\",\n        \"TopTerms\": 25,\n        \"CaseInsensitive\": true,\n        \"IncludeFlattened\": true,\n        \"DataCatalogEndpoint\": \"http://localhost:8201/\",\n        \"DataCatalogType\": \"Lexi\",\n        \"DataCatalogCollection\": \"00000000-0000-0000-0000-000000000000\",\n        \"GraphRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\"\n    },\n    \"EmbeddingsRule\": {\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"Name\": \"My storage server embeddings rule\",\n        \"ContentType\": \"*\",\n        \"GraphRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"VectorRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"DataFlowEndpoint\": \"http://localhost:8501/processor\",\n        \"EmbeddingsGenerator\": \"LCProxy\",\n        \"GeneratorUrl\": \"http://localhost:8301/\",\n        \"GeneratorApiKey\": \"\",\n        \"VectorStoreUrl\": \"http://localhost:8311/\",\n        \"MaxContentLength\": 16777216\n    },\n    \"VectorRepository\": {\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"Name\": \"My vector repository\",\n        \"RepositoryType\": \"Pgvector\",\n        \"Model\": \"all-MiniLM-L6-v2\",\n        \"Dimensionality\": 384,\n        \"DatabaseHostname\": \"localhost\",\n        \"DatabaseName\": \"vectordb\",\n        \"DatabaseTable\": \"minilm\",\n        \"DatabasePort\": 5432,\n        \"DatabaseUser\": \"postgres\",\n        \"DatabasePassword\": \"password\"\n    },\n    \"GraphRepository\": {\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\n        \"Name\": \"My LiteGraph instance\",\n        \"RepositoryType\": \"LiteGraph\",\n        \"EndpointUrl\": \"http://localhost:8701/\",\n        \"ApiKey\": \"default\",\n        \"GraphIdentifier\": \"00000000-0000-0000-0000-000000000000\"\n    }\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/printers/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"printers",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Printer",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/enterprisedesktop/printers/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"enterprisedesktop",
+										"printers",
+										"00000000-0000-0000-0000-000000000000"
 									]
 								}
 							},
