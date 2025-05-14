@@ -788,6 +788,44 @@
 							"response": []
 						},
 						{
+							"name": "Write with default objects (with user)",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-token",
+										"value": "mXCNtMWDsW0/pr+IwRFUjXBVjkfXmw5kOWa0MAAjOYFdWihIAWAlJq8ORMfTQRyCUwOcX8ZOOQ8hyCLDK3HNuKq0UDqWxFQpy9BqbqWvYG5zaYf9+GoWdfnRlrcxJUBi83RpmZq75sA5U5C7MFtWHMNdMhycJL4U+tL27xwOPNlXriAsc4ZyAOniJQCMIV9rFDcUgrUgIOze75Bh5dWJwM2bEY/Um1fbakKrYEPy9k2PQIx1UZ0+g7BBD7lLp9sdkixmd5stNcnFahQRADgZ+kboZR4+QZWMDQWrReXFnOg4rFp+p26RsAUa6LDIWQD4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"AccountGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"My tenant\",\r\n    \"DefaultPoolGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"S3BaseDomain\": \"localhost\",\r\n    \"RestBaseDomain\": \"localhost\",\r\n    \"User\": {\r\n        \"FirstName\": \"Hello\",\r\n        \"LastName\": \"World\",\r\n        \"Email\": \"hello@world.com\",\r\n        \"PasswordSha256\": \"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8\",\r\n        \"Notes\": \"Creating using tenant setup API\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/setup",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"setup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Update",
 							"request": {
 								"auth": {
