@@ -5701,6 +5701,40 @@
 							"response": []
 						},
 						{
+							"name": "Reset Crawl State",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}:/{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/datarepositories/00000000-0000-0000-0000-000000000000/reset",
+									"host": [
+										"{{protocol}}"
+									],
+									"port": "",
+									"path": [
+										"{{hostname}}:{{rest}}",
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"datarepositories",
+										"00000000-0000-0000-0000-000000000000",
+										"reset"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Write Disk Data Repository",
 							"request": {
 								"auth": {
