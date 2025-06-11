@@ -7307,7 +7307,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/stats",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -7318,7 +7318,8 @@
 										"tenants",
 										"{{tenant-guid}}",
 										"buckets",
-										"00000000-0000-0000-0000-000000000000"
+										"00000000-0000-0000-0000-000000000000",
+										"stats"
 									]
 								}
 							},
@@ -7816,7 +7817,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Owner\": {\r\n        \"GUID\": \"default\",\r\n        \"TenantGUID\": \"default\",\r\n        \"FirstName\": \"Default\",\r\n        \"LastName\": \"User\",\r\n        \"FullName\": \"Default User\",\r\n        \"Notes\": \"Default password is password\",\r\n        \"Email\": \"default@user.com\",\r\n        \"Active\": true,\r\n        \"CreatedUtc\": \"2024-08-06T16:30:09.495213Z\"\r\n    },\r\n    \"Users\": [\r\n        {\r\n            \"GUID\": \"default\",\r\n            \"TenantGUID\": \"default\",\r\n            \"FirstName\": \"Default\",\r\n            \"LastName\": \"User\",\r\n            \"FullName\": \"Default User\",\r\n            \"Notes\": \"Default password is password\",\r\n            \"Email\": \"default@user.com\",\r\n            \"Active\": true,\r\n            \"CreatedUtc\": \"2024-08-06T16:30:09.495213Z\"\r\n        }\r\n    ],\r\n    \"Entries\": [\r\n        {\r\n            \"GUID\": \"default\",\r\n            \"TenantGUID\": \"default\",\r\n            \"BucketGUID\": \"example-data-bucket\",\r\n            \"OwnerGUID\": \"default\",\r\n            \"UserGUID\": \"default\",\r\n            \"CanonicalUser\": \"\",\r\n            \"EnableRead\": true,\r\n            \"EnableReadAcp\": true,\r\n            \"EnableWrite\": true,\r\n            \"EnableWriteAcp\": true,\r\n            \"FullControl\": true,\r\n            \"CreatedUtc\": \"2024-08-06T16:30:09.643691Z\"\r\n        }\r\n    ]\r\n}"
+									"raw": "{\r\n    \"Owner\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"FirstName\": \"Default\",\r\n        \"LastName\": \"User\",\r\n        \"FullName\": \"Default User\",\r\n        \"Notes\": \"Default password is password\",\r\n        \"Email\": \"default@user.com\",\r\n        \"Active\": true,\r\n        \"CreatedUtc\": \"2024-08-06T16:30:09.495213Z\"\r\n    },\r\n    \"Users\": [\r\n        {\r\n            \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"FirstName\": \"Default\",\r\n            \"LastName\": \"User\",\r\n            \"FullName\": \"Default User\",\r\n            \"Notes\": \"Default password is password\",\r\n            \"Email\": \"default@user.com\",\r\n            \"Active\": true,\r\n            \"CreatedUtc\": \"2024-08-06T16:30:09.495213Z\"\r\n        }\r\n    ],\r\n    \"Entries\": [\r\n        {\r\n            \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"UserGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"CanonicalUser\": \"\",\r\n            \"EnableRead\": true,\r\n            \"EnableReadAcp\": true,\r\n            \"EnableWrite\": true,\r\n            \"EnableWriteAcp\": true,\r\n            \"FullControl\": true,\r\n            \"CreatedUtc\": \"2024-08-06T16:30:09.643691Z\"\r\n        }\r\n    ]\r\n}"
 								},
 								"url": {
 									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000?acl",
@@ -8759,7 +8760,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/foo.txt",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/00000000-0000-0000-0000-000000000000",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -8772,7 +8773,7 @@
 										"buckets",
 										"00000000-0000-0000-0000-000000000000",
 										"uploads",
-										"foo.txt"
+										"00000000-0000-0000-0000-000000000000"
 									]
 								}
 							},
@@ -8801,7 +8802,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/foo.txt?partNumber=1",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/00000000-0000-0000-0000-000000000000?partNumber=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -8814,7 +8815,7 @@
 										"buckets",
 										"00000000-0000-0000-0000-000000000000",
 										"uploads",
-										"foo.txt"
+										"00000000-0000-0000-0000-000000000000"
 									],
 									"query": [
 										{
@@ -8846,7 +8847,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/foo.txt?partNumber=1",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/00000000-0000-0000-0000-000000000000?partNumber=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -8859,7 +8860,7 @@
 										"buckets",
 										"00000000-0000-0000-0000-000000000000",
 										"uploads",
-										"foo.txt"
+										"00000000-0000-0000-0000-000000000000"
 									],
 									"query": [
 										{
@@ -8891,7 +8892,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/foo.txt",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/00000000-0000-0000-0000-000000000000",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -8904,7 +8905,7 @@
 										"buckets",
 										"00000000-0000-0000-0000-000000000000",
 										"uploads",
-										"foo.txt"
+										"00000000-0000-0000-0000-000000000000"
 									]
 								}
 							},
@@ -8930,7 +8931,7 @@
 									"raw": "Part 3."
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/foo.txt/parts?partNumber=3",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/00000000-0000-0000-0000-000000000000/parts?partNumber=3",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -8943,7 +8944,7 @@
 										"buckets",
 										"00000000-0000-0000-0000-000000000000",
 										"uploads",
-										"foo.txt",
+										"00000000-0000-0000-0000-000000000000",
 										"parts"
 									],
 									"query": [
@@ -8976,7 +8977,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/foo.txt",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/00000000-0000-0000-0000-000000000000",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -8989,7 +8990,7 @@
 										"buckets",
 										"00000000-0000-0000-0000-000000000000",
 										"uploads",
-										"foo.txt"
+										"00000000-0000-0000-0000-000000000000"
 									]
 								}
 							},
