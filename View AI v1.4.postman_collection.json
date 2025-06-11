@@ -5981,6 +5981,47 @@
 							"response": []
 						},
 						{
+							"name": "Write Web Data Repository",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\": \"My Web repository\",\r\n    \"RepositoryType\": \"Web\",\r\n    \"WebAuthentication\": \"None\",\r\n    \"WebUsername\": null,\r\n    \"WebPassword\": null,\r\n    \"WebApiKeyHeader\": null,\r\n    \"WebApiKey\": null,\r\n    \"WebBearerToken\": null,\r\n    \"WebUserAgent\": \"view-crawler\",\r\n    \"WebStartUrl\": \"http://mysite.com\",\r\n    \"WebFollowLinks\": true,\r\n    \"WebFollowRedirects\": true,\r\n    \"WebIncludeSitemap\": true,\r\n    \"WebRestrictToChildUrls\": true,\r\n    \"WebRestrictToSameDomain\": true,\r\n    \"WebIgnoreRobotsTxt\": false,\r\n    \"WebMaxDepth\": 4,\r\n    \"WebMaxParallelTasks\": 4,\r\n    \"WebCrawlDelayMs\": 500\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/datarepositories",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"datarepositories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Update Data Repository",
 							"request": {
 								"auth": {
