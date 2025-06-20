@@ -7495,7 +7495,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Name\": \"testbucket2\",\r\n    \"RegionString\": \"us-west-1\",\r\n    \"Versioning\": true,\r\n    \"RetentionMinutes\": 1\r\n}"
+                                  "raw": "{\r\n    \"Name\": \"testbucket2\",\r\n    \"RegionString\": \"us-west-1\",\r\n    \"Versioning\": true,\r\n    \"RetentionMinutes\": 1,\r\n    \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"PoolGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\"\r\n}"
 								},
 								"url": {
 									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000",
