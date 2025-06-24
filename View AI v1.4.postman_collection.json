@@ -8693,6 +8693,53 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Delete Multiple",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "AWS4-HMAC-SHA256 Credential=default/20130524/us-east-1/s3/aws4_request, SignedHeaders=host;range;x-amz-date, Signature=fe5f80f77d5fa3beca038a248ff027d0445342fe2855ddc963176630326f1024"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Quiet\": false,\r\n    \"Objects\": [\r\n        {\r\n            \"Key\": \"1.pdf\",\r\n            \"Version\": \"1\"\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/objects",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{storage-rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"buckets",
+										"00000000-0000-0000-0000-000000000000",
+										"objects"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
