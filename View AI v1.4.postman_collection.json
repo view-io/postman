@@ -1362,6 +1362,45 @@
 							"response": []
 						},
 						{
+							"name": "Retrieve permissions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/users/permissions?guids=00000000-0000-0000-0000-000000000000,11111111-1111-1111-1111-111111111111",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"users",
+										"permissions"
+									],
+									"query": [
+										{
+											"key": "guids",
+											"value": "00000000-0000-0000-0000-000000000000,11111111-1111-1111-1111-111111111111"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Write",
 							"request": {
 								"auth": {
