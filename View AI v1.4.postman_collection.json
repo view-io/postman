@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "a9d956a5-d269-447f-9b76-09afa519a8fe",
-		"name": "View AI v1.2",
+		"_postman_id": "a8f0ce04-b08b-4676-bf2f-db3fa9c2bb46",
+		"name": "View AI v1.4",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31392148",
-		"_collection_link": "https://view-blake.postman.co/workspace/view-blake-Workspace~4126e904-23e2-422c-9456-1b6cca40b77a/collection/31392148-a9d956a5-d269-447f-9b76-09afa519a8fe?action=share&source=collection_link&creator=31392148"
+		"_exporter_id": "720438"
 	},
 	"item": [
 		{
@@ -789,6 +788,44 @@
 							"response": []
 						},
 						{
+							"name": "Write with default objects (with user)",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-token",
+										"value": "mXCNtMWDsW0/pr+IwRFUjXBVjkfXmw5kOWa0MAAjOYFdWihIAWAlJq8ORMfTQRyCUwOcX8ZOOQ8hyCLDK3HNuKq0UDqWxFQpy9BqbqWvYG5zaYf9+GoWdfnRlrcxJUBi83RpmZq75sA5U5C7MFtWHMNdMhycJL4U+tL27xwOPNlXriAsc4ZyAOniJQCMIV9rFDcUgrUgIOze75Bh5dWJwM2bEY/Um1fbakKrYEPy9k2PQIx1UZ0+g7BBD7lLp9sdkixmd5stNcnFahQRADgZ+kboZR4+QZWMDQWrReXFnOg4rFp+p26RsAUa6LDIWQD4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"AccountGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"My tenant\",\r\n    \"DefaultPoolGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"S3BaseDomain\": \"localhost\",\r\n    \"RestBaseDomain\": \"localhost\",\r\n    \"User\": {\r\n        \"FirstName\": \"Hello\",\r\n        \"LastName\": \"World\",\r\n        \"Email\": \"hello@world.com\",\r\n        \"PasswordSha256\": \"5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8\",\r\n        \"Notes\": \"Creating using tenant setup API\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/setup",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"setup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Update",
 							"request": {
 								"auth": {
@@ -1325,6 +1362,45 @@
 							"response": []
 						},
 						{
+							"name": "Retrieve permissions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/users/permissions?guids=00000000-0000-0000-0000-000000000000,11111111-1111-1111-1111-111111111111",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"users",
+										"permissions"
+									],
+									"query": [
+										{
+											"key": "guids",
+											"value": "00000000-0000-0000-0000-000000000000,11111111-1111-1111-1111-111111111111"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Write",
 							"request": {
 								"auth": {
@@ -1690,6 +1766,1031 @@
 								}
 							},
 							"response": []
+						}
+					]
+				},
+				{
+					"name": "Roles-Based Access Control",
+					"item": [
+						{
+							"name": "Permissions",
+							"item": [
+								{
+									"name": "Enumerate",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v2.0/tenants/{{tenant-guid}}/permissions",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v2.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"permissions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Retrieve All",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/permissions",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"permissions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Retrieve",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/permissions/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"permissions",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Write",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "content-type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"ResourceTypes\": [ \"Blob\", \"Bucket\" ],\r\n\t\"OperationTypes\": [ \"Create\", \"Read\", \"Update\", \"Delete\", \"Execute\" ],\r\n\t\"PermissionType\": \"Permit\",\r\n\t\"Active\": true\r\n}"
+										},
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/permissions",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"permissions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "content-type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"ResourceTypes\": [ \"Blob\", \"Bucket\" ],\r\n\t\"OperationTypes\": [ \"Create\", \"Read\", \"Update\", \"Delete\", \"Execute\" ],\r\n\t\"PermissionType\": \"Permit\",\r\n\t\"Active\": true\r\n}"
+										},
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/permissions/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"permissions",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"TenantGUID\": \"05b702a6-9c0e-4741-a465-581f2456e994\",\r\n    \"Name\": \"Another Storage Pool\",\r\n    \"Provider\": \"Disk\",\r\n    \"WriteMode\": \"GUID\",\r\n    \"UseSsl\": false,\r\n    \"DiskDirectory\": \"./disk2/\",\r\n    \"Dedupe\": false,\r\n    \"Compress\": \"None\",\r\n    \"EnableReadCaching\": false,\r\n    \"Encrypt\": \"None\"\r\n}"
+										},
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/permissions/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"permissions",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Check Existence",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "HEAD",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/permissions/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"permissions",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Roles",
+							"item": [
+								{
+									"name": "Enumerate",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v2.0/tenants/{{tenant-guid}}/roles",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v2.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"roles"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Retrieve All",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/roles",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"roles"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Retrieve",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/roles/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"roles",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Write",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "content-type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"Name\": \"Super duper user\",\r\n\t\"Active\": true\r\n}"
+										},
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/roles",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"roles"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "content-type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"Name\": \"Super duper user\",\r\n\t\"Active\": true\r\n}"
+										},
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/roles/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"roles",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"TenantGUID\": \"05b702a6-9c0e-4741-a465-581f2456e994\",\r\n    \"Name\": \"Another Storage Pool\",\r\n    \"Provider\": \"Disk\",\r\n    \"WriteMode\": \"GUID\",\r\n    \"UseSsl\": false,\r\n    \"DiskDirectory\": \"./disk2/\",\r\n    \"Dedupe\": false,\r\n    \"Compress\": \"None\",\r\n    \"EnableReadCaching\": false,\r\n    \"Encrypt\": \"None\"\r\n}"
+										},
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/roles/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"roles",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Check Existence",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "HEAD",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/roles/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"roles",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Role to Permission Maps",
+							"item": [
+								{
+									"name": "Enumerate",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v2.0/tenants/{{tenant-guid}}/rolepermissionmaps",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v2.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"rolepermissionmaps"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Retrieve All",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/rolepermissionmaps",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"rolepermissionmaps"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Retrieve",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/rolepermissionmaps/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"rolepermissionmaps",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Write",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "content-type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"RoleGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\"PermissionGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\"Active\": true\r\n}"
+										},
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/rolepermissionmaps",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"rolepermissionmaps"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "content-type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"RoleGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\"PermissionGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\"Active\": true\r\n}"
+										},
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/rolepermissionmaps/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"rolepermissionmaps",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"TenantGUID\": \"05b702a6-9c0e-4741-a465-581f2456e994\",\r\n    \"Name\": \"Another Storage Pool\",\r\n    \"Provider\": \"Disk\",\r\n    \"WriteMode\": \"GUID\",\r\n    \"UseSsl\": false,\r\n    \"DiskDirectory\": \"./disk2/\",\r\n    \"Dedupe\": false,\r\n    \"Compress\": \"None\",\r\n    \"EnableReadCaching\": false,\r\n    \"Encrypt\": \"None\"\r\n}"
+										},
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/rolepermissionmaps/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"rolepermissionmaps",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Check Existence",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "HEAD",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/rolepermissionmaps/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"rolepermissionmaps",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "User to Role Maps",
+							"item": [
+								{
+									"name": "Enumerate",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v2.0/tenants/{{tenant-guid}}/userrolemaps",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v2.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"userrolemaps"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Retrieve All",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/userrolemaps",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"userrolemaps"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Retrieve",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/userrolemaps/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"userrolemaps",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Write",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "content-type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"UserGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\"RoleGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\"Active\": true\r\n}"
+										},
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/userrolemaps",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"userrolemaps"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "content-type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"UserGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\"RoleGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n\t\"Active\": true\r\n}"
+										},
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/userrolemaps/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"userrolemaps",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"TenantGUID\": \"05b702a6-9c0e-4741-a465-581f2456e994\",\r\n    \"Name\": \"Another Storage Pool\",\r\n    \"Provider\": \"Disk\",\r\n    \"WriteMode\": \"GUID\",\r\n    \"UseSsl\": false,\r\n    \"DiskDirectory\": \"./disk2/\",\r\n    \"Dedupe\": false,\r\n    \"Compress\": \"None\",\r\n    \"EnableReadCaching\": false,\r\n    \"Encrypt\": \"None\"\r\n}"
+										},
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/userrolemaps/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"userrolemaps",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Check Existence",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accesskey}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "HEAD",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/userrolemaps/00000000-0000-0000-0000-000000000000",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{hostname}}"
+											],
+											"port": "{{rest}}",
+											"path": [
+												"v1.0",
+												"tenants",
+												"{{tenant-guid}}",
+												"userrolemaps",
+												"00000000-0000-0000-0000-000000000000"
+											]
+										}
+									},
+									"response": []
+								}
+							]
 						}
 					]
 				},
@@ -4436,6 +5537,25 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Get Deployment Type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{rest}}/deployment",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{rest}}",
+							"path": [
+								"deployment"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -4536,6 +5656,118 @@
 										"{{tenant-guid}}",
 										"datarepositories",
 										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Connectivity",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/datarepositories/00000000-0000-0000-0000-000000000000/connectivity",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"datarepositories",
+										"00000000-0000-0000-0000-000000000000",
+										"connectivity"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Enumerate Contents",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}:/{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/datarepositories/00000000-0000-0000-0000-000000000000/contents?max-keys=10&skip=0",
+									"host": [
+										"{{protocol}}"
+									],
+									"port": "",
+									"path": [
+										"{{hostname}}:{{rest}}",
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"datarepositories",
+										"00000000-0000-0000-0000-000000000000",
+										"contents"
+									],
+									"query": [
+										{
+											"key": "max-keys",
+											"value": "10"
+										},
+										{
+											"key": "skip",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset Crawl State",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}:/{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/datarepositories/00000000-0000-0000-0000-000000000000/reset",
+									"host": [
+										"{{protocol}}"
+									],
+									"port": "",
+									"path": [
+										"{{hostname}}:{{rest}}",
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"datarepositories",
+										"00000000-0000-0000-0000-000000000000",
+										"reset"
 									]
 								}
 							},
@@ -4769,6 +6001,47 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n    \"Name\": \"My NFS repository\",\r\n    \"RepositoryType\": \"NFS\",\r\n    \"NfsVersion\": \"V3\",\r\n    \"NfsHostname\": \"192.168.86.248\",\r\n    \"NfsUserId\": 0,\r\n    \"NfsGroupId\": 0,\r\n    \"NfsShareName\": \"/nfs\",\r\n    \"NfsIncludeSubdirectories\": true\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/datarepositories",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"datarepositories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Write Web Data Repository",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\": \"My Web repository\",\r\n    \"RepositoryType\": \"Web\",\r\n    \"WebAuthentication\": \"None\",\r\n    \"WebUsername\": null,\r\n    \"WebPassword\": null,\r\n    \"WebApiKeyHeader\": null,\r\n    \"WebApiKey\": null,\r\n    \"WebBearerToken\": null,\r\n    \"WebUserAgent\": \"view-crawler\",\r\n    \"WebStartUrl\": \"http://mysite.com\",\r\n    \"WebFollowLinks\": true,\r\n    \"WebFollowRedirects\": true,\r\n    \"WebIncludeSitemap\": true,\r\n    \"WebRestrictToChildUrls\": true,\r\n    \"WebRestrictToSubdomain\": true,\r\n    \"WebRestrictToRootDomain\": true,\r\n    \"WebIgnoreRobotsTxt\": false,\r\n    \"WebMaxDepth\": 4,\r\n    \"WebMaxParallelTasks\": 4,\r\n    \"WebCrawlDelayMs\": 500\r\n}"
 								},
 								"url": {
 									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/datarepositories",
@@ -5809,49 +7082,6 @@
 							"response": []
 						},
 						{
-							"name": "Start",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "content-type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"Name\": \"My tenant\"\r\n}"
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/crawloperations/00000000-0000-0000-0000-000000000000/start",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"crawloperations",
-										"00000000-0000-0000-0000-000000000000",
-										"start"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Stop",
 							"request": {
 								"auth": {
@@ -5963,902 +7193,6 @@
 								}
 							},
 							"response": []
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Orchestration",
-			"item": [
-				{
-					"name": "Triggers",
-					"item": [
-						{
-							"name": "Retrieve all",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/triggers",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"triggers"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve by GUID",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/triggers/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"triggers",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Exists",
-							"request": {
-								"method": "HEAD",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/triggers/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"triggers",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"TriggerType\": \"HTTP\",\r\n    \"Name\": \"My second trigger\",\r\n    \"HttpMethod\": \"GET\",\r\n    \"HttpUrlPrefix\": \"/default2\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/triggers",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"triggers"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"TriggerType\": \"HTTP\",\r\n    \"Name\": \"My updated trigger\",\r\n    \"HttpMethod\": \"GET\",\r\n    \"HttpUrlPrefix\": \"/default2\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/triggers/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"triggers",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/triggers/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"triggers",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Steps",
-					"item": [
-						{
-							"name": "Retrieve all",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/steps",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"steps"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve by GUID",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/steps/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"steps",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve by GUID with subordinates and packages",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/steps/00000000-0000-0000-0000-000000000000?inclsub&incldata",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"steps",
-										"00000000-0000-0000-0000-000000000000"
-									],
-									"query": [
-										{
-											"key": "inclsub",
-											"value": null
-										},
-										{
-											"key": "incldata",
-											"value": null
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Exists",
-							"request": {
-								"method": "HEAD",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/steps/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"steps",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"Name\": \"Another test step\",\r\n    \"Runtime\": \"Dotnet8\",\r\n    \"StepArchiveFilename\": \"TestStep.zip\",\r\n    \"StepEntrypointFilename\": \"LoopbackGetStep.dll\",\r\n    \"StepEntrypointType\": \"LoopbackGetStep.LoopbackGetStep\",\r\n    \"MD5Hash\": \"900B50364A091B1D09A374EBD364F056\",\r\n    \"SHA1Hash\": \"1216C1DCD4E7A2A5A2F615F852AB886F2BB29202\",\r\n    \"SHA256Hash\": \"46403910F99FDE6F0581E66F70638AB961CBF13BA64D870E8816C84BAC05462F\",\r\n    \"DebugAssemblyLoad\": false,\r\n    \"DebugWrapperScript\": false,\r\n    \"DebugRequestData\": false,\r\n    \"DebugResponseData\": false,\r\n    \"ConsoleLogging\": true,\r\n    \"VirtualEnvironment\": null,\r\n    \"DependenciesFile\": null,\r\n    \"CreatedUtc\": \"2024-05-09T16:13:55.608668Z\",\r\n    \"Package\": \"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\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/steps",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"steps"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/steps/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"steps",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Data Flows",
-					"item": [
-						{
-							"name": "Retrieve all",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/dataflows",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"dataflows"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve by GUID",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/dataflows/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"dataflows",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve by GUID with steps",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/dataflows/00000000-0000-0000-0000-000000000000?inclsub",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"dataflows",
-										"00000000-0000-0000-0000-000000000000"
-									],
-									"query": [
-										{
-											"key": "inclsub",
-											"value": null
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve request log metadata",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/dataflows/00000000-0000-0000-0000-000000000000/logs?request=00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"dataflows",
-										"00000000-0000-0000-0000-000000000000",
-										"logs"
-									],
-									"query": [
-										{
-											"key": "request",
-											"value": "00000000-0000-0000-0000-000000000000"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve request log file",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/dataflows/00000000-0000-0000-0000-000000000000/logfile?request=00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"dataflows",
-										"00000000-0000-0000-0000-000000000000",
-										"logfile"
-									],
-									"query": [
-										{
-											"key": "request",
-											"value": "00000000-0000-0000-0000-000000000000"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve request performance data",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/dataflows/00000000-0000-0000-0000-000000000000/performance?request=00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"dataflows",
-										"00000000-0000-0000-0000-000000000000",
-										"performance"
-									],
-									"query": [
-										{
-											"key": "request",
-											"value": "00000000-0000-0000-0000-000000000000"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Exists",
-							"request": {
-								"method": "HEAD",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/dataflows/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"dataflows",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"TriggerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"StepGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"Another data flow\",\r\n    \"Notes\": \"My notes\",\r\n    \"LogRetentionDays\": 7,\r\n    \"Map\": {\r\n        \"StepGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Success\": null,\r\n        \"Failure\": null,\r\n        \"Exception\": null\r\n    }\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/dataflows",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"dataflows"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/dataflows/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"dataflows",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Sample Data Flows",
-					"item": [
-						{
-							"name": "Csharp",
-							"item": [
-								{
-									"name": "Loopback",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{protocol}}://{{hostname}}:{{rest}}/test/csharp/loopback",
-											"protocol": "{{protocol}}",
-											"host": [
-												"{{hostname}}"
-											],
-											"port": "{{rest}}",
-											"path": [
-												"test",
-												"csharp",
-												"loopback"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Loopback with echo",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"content-type": true
-										}
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "X-Api-Key",
-												"value": "Hello"
-											},
-											{
-												"key": "Content-Type",
-												"value": "text/plain"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "Hello, world!",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{protocol}}://{{hostname}}:{{rest}}/test/csharp/loopback",
-											"protocol": "{{protocol}}",
-											"host": [
-												"{{hostname}}"
-											],
-											"port": "{{rest}}",
-											"path": [
-												"test",
-												"csharp",
-												"loopback"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Generate random number",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{protocol}}://{{hostname}}:{{rest}}/test/csharp/random",
-											"protocol": "{{protocol}}",
-											"host": [
-												"{{hostname}}"
-											],
-											"port": "{{rest}}",
-											"path": [
-												"test",
-												"csharp",
-												"random"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Multiply by two",
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "text/plain"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "12",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{protocol}}://{{hostname}}:{{rest}}/test/csharp/double",
-											"protocol": "{{protocol}}",
-											"host": [
-												"{{hostname}}"
-											],
-											"port": "{{rest}}",
-											"path": [
-												"test",
-												"csharp",
-												"double"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get public IP",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{protocol}}://{{hostname}}:{{rest}}/test/csharp/publicip",
-											"protocol": "{{protocol}}",
-											"host": [
-												"{{hostname}}"
-											],
-											"port": "{{rest}}",
-											"path": [
-												"test",
-												"csharp",
-												"publicip"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Python",
-							"item": [
-								{
-									"name": "Loopback",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{protocol}}://{{hostname}}:{{rest}}/test/python/loopback",
-											"protocol": "{{protocol}}",
-											"host": [
-												"{{hostname}}"
-											],
-											"port": "{{rest}}",
-											"path": [
-												"test",
-												"python",
-												"loopback"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Loopback with echo",
-									"protocolProfileBehavior": {
-										"disabledSystemHeaders": {
-											"content-type": true
-										}
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "X-Api-Key",
-												"value": "Hello"
-											},
-											{
-												"key": "Content-Type",
-												"value": "text/plain"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "Hello, world!",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{protocol}}://{{hostname}}:{{rest}}/test/python/loopback",
-											"protocol": "{{protocol}}",
-											"host": [
-												"{{hostname}}"
-											],
-											"port": "{{rest}}",
-											"path": [
-												"test",
-												"python",
-												"loopback"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get public IP",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{protocol}}://{{hostname}}:{{rest}}/test/python/publicip",
-											"protocol": "{{protocol}}",
-											"host": [
-												"{{hostname}}"
-											],
-											"port": "{{rest}}",
-											"path": [
-												"test",
-												"python",
-												"publicip"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Multistep",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{protocol}}://{{hostname}}:{{rest}}/test/python/multistep",
-											"protocol": "{{protocol}}",
-											"host": [
-												"{{hostname}}"
-											],
-											"port": "{{rest}}",
-											"path": [
-												"test",
-												"python",
-												"multistep"
-											]
-										}
-									},
-									"response": []
-								}
-							]
 						}
 					]
 				}
@@ -7010,7 +7344,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/stats",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -7021,7 +7355,8 @@
 										"tenants",
 										"{{tenant-guid}}",
 										"buckets",
-										"00000000-0000-0000-0000-000000000000"
+										"00000000-0000-0000-0000-000000000000",
+										"stats"
 									]
 								}
 							},
@@ -7519,7 +7854,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Owner\": {\r\n        \"GUID\": \"default\",\r\n        \"TenantGUID\": \"default\",\r\n        \"FirstName\": \"Default\",\r\n        \"LastName\": \"User\",\r\n        \"FullName\": \"Default User\",\r\n        \"Notes\": \"Default password is password\",\r\n        \"Email\": \"default@user.com\",\r\n        \"Active\": true,\r\n        \"CreatedUtc\": \"2024-08-06T16:30:09.495213Z\"\r\n    },\r\n    \"Users\": [\r\n        {\r\n            \"GUID\": \"default\",\r\n            \"TenantGUID\": \"default\",\r\n            \"FirstName\": \"Default\",\r\n            \"LastName\": \"User\",\r\n            \"FullName\": \"Default User\",\r\n            \"Notes\": \"Default password is password\",\r\n            \"Email\": \"default@user.com\",\r\n            \"Active\": true,\r\n            \"CreatedUtc\": \"2024-08-06T16:30:09.495213Z\"\r\n        }\r\n    ],\r\n    \"Entries\": [\r\n        {\r\n            \"GUID\": \"default\",\r\n            \"TenantGUID\": \"default\",\r\n            \"BucketGUID\": \"example-data-bucket\",\r\n            \"OwnerGUID\": \"default\",\r\n            \"UserGUID\": \"default\",\r\n            \"CanonicalUser\": \"\",\r\n            \"EnableRead\": true,\r\n            \"EnableReadAcp\": true,\r\n            \"EnableWrite\": true,\r\n            \"EnableWriteAcp\": true,\r\n            \"FullControl\": true,\r\n            \"CreatedUtc\": \"2024-08-06T16:30:09.643691Z\"\r\n        }\r\n    ]\r\n}"
+									"raw": "{\r\n    \"Owner\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"FirstName\": \"Default\",\r\n        \"LastName\": \"User\",\r\n        \"FullName\": \"Default User\",\r\n        \"Notes\": \"Default password is password\",\r\n        \"Email\": \"default@user.com\",\r\n        \"Active\": true,\r\n        \"CreatedUtc\": \"2024-08-06T16:30:09.495213Z\"\r\n    },\r\n    \"Users\": [\r\n        {\r\n            \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"FirstName\": \"Default\",\r\n            \"LastName\": \"User\",\r\n            \"FullName\": \"Default User\",\r\n            \"Notes\": \"Default password is password\",\r\n            \"Email\": \"default@user.com\",\r\n            \"Active\": true,\r\n            \"CreatedUtc\": \"2024-08-06T16:30:09.495213Z\"\r\n        }\r\n    ],\r\n    \"Entries\": [\r\n        {\r\n            \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"UserGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"CanonicalUser\": \"\",\r\n            \"EnableRead\": true,\r\n            \"EnableReadAcp\": true,\r\n            \"EnableWrite\": true,\r\n            \"EnableWriteAcp\": true,\r\n            \"FullControl\": true,\r\n            \"CreatedUtc\": \"2024-08-06T16:30:09.643691Z\"\r\n        }\r\n    ]\r\n}"
 								},
 								"url": {
 									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000?acl",
@@ -8354,6 +8689,53 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Delete Multiple",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "AWS4-HMAC-SHA256 Credential=default/20130524/us-east-1/s3/aws4_request, SignedHeaders=host;range;x-amz-date, Signature=fe5f80f77d5fa3beca038a248ff027d0445342fe2855ddc963176630326f1024"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Quiet\": false,\r\n    \"Objects\": [\r\n        {\r\n            \"Key\": \"1.pdf\",\r\n            \"Version\": \"1\"\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/objects",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{storage-rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"buckets",
+										"00000000-0000-0000-0000-000000000000",
+										"objects"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -8462,7 +8844,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/foo.txt",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/00000000-0000-0000-0000-000000000000",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -8475,7 +8857,7 @@
 										"buckets",
 										"00000000-0000-0000-0000-000000000000",
 										"uploads",
-										"foo.txt"
+										"00000000-0000-0000-0000-000000000000"
 									]
 								}
 							},
@@ -8504,7 +8886,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/foo.txt?partNumber=1",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/00000000-0000-0000-0000-000000000000?partNumber=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -8517,7 +8899,7 @@
 										"buckets",
 										"00000000-0000-0000-0000-000000000000",
 										"uploads",
-										"foo.txt"
+										"00000000-0000-0000-0000-000000000000"
 									],
 									"query": [
 										{
@@ -8549,7 +8931,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/foo.txt?partNumber=1",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/00000000-0000-0000-0000-000000000000?partNumber=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -8562,7 +8944,7 @@
 										"buckets",
 										"00000000-0000-0000-0000-000000000000",
 										"uploads",
-										"foo.txt"
+										"00000000-0000-0000-0000-000000000000"
 									],
 									"query": [
 										{
@@ -8594,7 +8976,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/foo.txt",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/00000000-0000-0000-0000-000000000000",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -8607,7 +8989,7 @@
 										"buckets",
 										"00000000-0000-0000-0000-000000000000",
 										"uploads",
-										"foo.txt"
+										"00000000-0000-0000-0000-000000000000"
 									]
 								}
 							},
@@ -8630,10 +9012,10 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "Part 3."
+									"raw": "Part 1."
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/foo.txt/parts?partNumber=3",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/00000000-0000-0000-0000-000000000000/parts?partNumber=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -8646,13 +9028,13 @@
 										"buckets",
 										"00000000-0000-0000-0000-000000000000",
 										"uploads",
-										"foo.txt",
+										"00000000-0000-0000-0000-000000000000",
 										"parts"
 									],
 									"query": [
 										{
 											"key": "partNumber",
-											"value": "3"
+											"value": "1"
 										}
 									]
 								}
@@ -8679,7 +9061,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/foo.txt",
+									"raw": "{{protocol}}://{{hostname}}:{{storage-rest}}/v1.0/tenants/{{tenant-guid}}/buckets/00000000-0000-0000-0000-000000000000/uploads/00000000-0000-0000-0000-000000000000",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -8692,7 +9074,7 @@
 										"buckets",
 										"00000000-0000-0000-0000-000000000000",
 										"uploads",
-										"foo.txt"
+										"00000000-0000-0000-0000-000000000000"
 									]
 								}
 							},
@@ -8706,15 +9088,15 @@
 			"name": "Processor",
 			"item": [
 				{
-					"name": "Logs",
+					"name": "Tasks",
 					"item": [
 						{
-							"name": "Retrieve request log file",
+							"name": "Enumerate tasks",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/dataflows/logs/00000000-0000-0000-0000-000000000000",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/processortasks",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -8724,8 +9106,29 @@
 										"v1.0",
 										"tenants",
 										"{{tenant-guid}}",
-										"dataflows",
-										"logs",
+										"processortasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve task",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/processortasks/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"processortasks",
 										"00000000-0000-0000-0000-000000000000"
 									]
 								}
@@ -8733,12 +9136,12 @@
 							"response": []
 						},
 						{
-							"name": "Retrieve request performance data",
+							"name": "Retrieve task logs",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/dataflows/performance/00000000-0000-0000-0000-000000000000",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/processortasks/00000000-0000-0000-0000-000000000000/log",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -8748,9 +9151,9 @@
 										"v1.0",
 										"tenants",
 										"{{tenant-guid}}",
-										"dataflows",
-										"performance",
-										"00000000-0000-0000-0000-000000000000"
+										"processortasks",
+										"00000000-0000-0000-0000-000000000000",
+										"log"
 									]
 								}
 							},
@@ -8770,7 +9173,43 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Async\": true,\r\n    \"Tenant\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"Default Tenant\",\r\n        \"Region\": \"us-west-1\",\r\n        \"S3BaseDomain\": \"localhost\",\r\n        \"DefaultPoolGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Active\": true\r\n    },\r\n    \"Collection\":     {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"My first collection\",\r\n        \"AllowOverwrites\": true,\r\n        \"AdditionalData\": \"Created by setup\"\r\n    },\r\n    \"Bucket\":     {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"PoolGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Category\": \"Data\",\r\n        \"Name\": \"example-data-bucket\",\r\n        \"RegionString\": \"us-west-1\",\r\n        \"Versioning\": true,\r\n        \"MaxMultipartUploadSeconds\": 604800\r\n    },\r\n    \"Pool\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"default\",\r\n        \"Provider\": \"Disk\",\r\n        \"WriteMode\": \"GUID\",\r\n        \"UseSsl\": false,\r\n        \"DiskDirectory\": \"./disk/\",\r\n        \"Compress\": \"None\",\r\n        \"EnableReadCaching\": false\r\n    },\r\n    \"Object\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"ParentGUID\": null,\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantName\": \"My default tenant\",\r\n        \"PoolGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"BucketName\": \"data\",\r\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Key\": \"hello1.txt\",\r\n        \"Version\": \"1\",\r\n        \"ContentType\": \"text/plain\",\r\n        \"DocumentType\": \"Text\",\r\n        \"ContentLength\": 13\r\n    },\r\n    \"MetadataRule\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"example-metadata-rule\",\r\n        \"ContentType\": \"*\",\r\n        \"MaxContentLength\": 16777216,\r\n        \"DataFlowEndpoint\": \"http://localhost:8501/processor\",\r\n        \"TypeDetectorEndpoint\": \"http://localhost:8501/processor/typedetector\",\r\n        \"SemanticCellEndpoint\": \"http://localhost:8341/\",\r\n        \"MaxChunkContentLength\": 512,\r\n        \"ShiftSize\": 448,\r\n        \"UdrEndpoint\": \"http://localhost:8321/\",\r\n        \"TopTerms\": 25,\r\n        \"CaseInsensitive\": true,\r\n        \"IncludeFlattened\": true,\r\n        \"DataCatalogEndpoint\": \"http://localhost:8201/\",\r\n        \"DataCatalogType\": \"Lexi\",\r\n        \"DataCatalogCollection\": \"default\",\r\n        \"GraphRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TargetBucketGUID\": \"00000000-0000-0000-0000-000000000000\"\r\n    },\r\n    \"EmbeddingsRule\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"My storage server embeddings rule\",\r\n        \"ContentType\": \"*\",\r\n        \"GraphRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"VectorRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"DataFlowEndpoint\": \"http://localhost:8501/processor\",\r\n        \"EmbeddingsGenerator\": \"LCProxy\",\r\n        \"GeneratorUrl\": \"http://localhost:8301/\",\r\n        \"GeneratorApiKey\": \"\",\r\n        \"VectorStoreUrl\": \"http://localhost:8311/\",\r\n        \"MaxContentLength\": 16777216\r\n    },\r\n    \"VectorRepository\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"My vector repository\",\r\n        \"RepositoryType\": \"Pgvector\",\r\n        \"Model\": \"all-MiniLM-L6-v2\",\r\n        \"Dimensionality\": 384,\r\n        \"DatabaseHostname\": \"localhost\",\r\n        \"DatabaseName\": \"vectordb\",\r\n        \"DatabaseTable\": \"minilm\",\r\n        \"DatabasePort\": 5432,\r\n        \"DatabaseUser\": \"postgres\",\r\n        \"DatabasePassword\": \"password\"\r\n    },\r\n    \"GraphRepository\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"My LiteGraph instance\",\r\n        \"RepositoryType\": \"LiteGraph\",\r\n        \"EndpointUrl\": \"http://localhost:8701/\",\r\n        \"ApiKey\": \"default\",\r\n        \"GraphIdentifier\": \"00000000-0000-0000-0000-000000000000\"\r\n    }\r\n}\r\n",
+							"raw": "{\r\n    \"MetadataRuleGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"EmbeddingsRuleGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Object\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"ParentGUID\": null,\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantName\": \"My default tenant\",\r\n        \"PoolGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"BucketName\": \"data\",\r\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Key\": \"hello1.txt\",\r\n        \"Version\": \"1\",\r\n        \"ContentType\": \"text/plain\",\r\n        \"DocumentType\": \"Text\",\r\n        \"ContentLength\": 85,\r\n        \"Data\": \"VGhpcyBpcyBhIHNhbXBsZSBkb2N1bWVudCB3aXRoIGp1c3QgYSBoYW5kZnVsIG9mIHdvcmRzIHRoYXQgd2lsbCBiZSBwcm9jZXNzZWQgYnkgVmlldw==\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/processing",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{rest}}",
+							"path": [
+								"v1.0",
+								"tenants",
+								"{{tenant-guid}}",
+								"processing"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Processing pipeline (datatable)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"MetadataRuleGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"EmbeddingsRuleGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Object\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Key\": \"datatable\",\r\n        \"Version\": \"1\",\r\n        \"ContentType\": \"application/json\",\r\n        \"DocumentType\": \"DataTable\",\r\n        \"DataTable\": {\r\n            \"Name\": \"TypeTest\",\r\n            \"Columns\": [\r\n                {\r\n                    \"Name\": \"id\",\r\n                    \"Type\": \"Int32\"\r\n                },\r\n                {\r\n                    \"Name\": \"name\",\r\n                    \"Type\": \"String\"\r\n                }\r\n            ],\r\n            \"Rows\": [\r\n                {\r\n                    \"id\": 1,\r\n                    \"name\": \"Hello\"\r\n                },\r\n                {\r\n                    \"id\": 2,\r\n                    \"name\": \"World\"\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -8843,7 +9282,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Async\": true,\r\n    \"Tenant\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"Default Tenant\",\r\n        \"Region\": \"us-west-1\",\r\n        \"S3BaseDomain\": \"localhost\",\r\n        \"DefaultPoolGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Active\": true\r\n    },\r\n    \"Collection\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"My first collection\",\r\n        \"AllowOverwrites\": true,\r\n        \"AdditionalData\": \"Created by setup\"\r\n    },\r\n    \"DataRepository\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"My disk data repository\",\r\n        \"RepositoryType\": \"File\",\r\n        \"DiskDirectory\": \"./disk/\"\r\n    },\r\n    \"Object\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000001\",\r\n        \"ParentGUID\": null,\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantName\": \"My default tenant\",\r\n        \"NodeGUID\": null,\r\n        \"PoolGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"BucketName\": \"data\",\r\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Key\": \"hello2.txt\",\r\n        \"Version\": \"1\",\r\n        \"ContentType\": \"text/plain\",\r\n        \"DocumentType\": \"Text\",\r\n        \"ContentLength\": 13,\r\n        \"Data\": \"VGhpcyBpcyBhIHNhbXBsZSBkb2N1bWVudCB3aXRoIGp1c3QgYSBoYW5kZnVsIG9mIHdvcmRzIHRoYXQgd2lsbCBiZSBwcm9jZXNzZWQgYnkgVmlldw==\"\r\n    },\r\n    \"MetadataRule\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"example-metadata-rule\",\r\n        \"ContentType\": \"*\",\r\n        \"MaxContentLength\": 16777216,\r\n        \"DataFlowEndpoint\": \"http://localhost:8501/processor\",\r\n        \"TypeDetectorEndpoint\": \"http://localhost:8501/processor/typedetector\",\r\n        \"SemanticCellEndpoint\": \"http://localhost:8341/\",\r\n        \"MaxChunkContentLength\": 512,\r\n        \"ShiftSize\": 448,\r\n        \"UdrEndpoint\": \"http://localhost:8321/\",\r\n        \"TopTerms\": 25,\r\n        \"CaseInsensitive\": true,\r\n        \"IncludeFlattened\": true,\r\n        \"DataCatalogEndpoint\": \"http://localhost:8201/\",\r\n        \"DataCatalogType\": \"Lexi\",\r\n        \"DataCatalogCollection\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"GraphRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\"\r\n    },\r\n    \"EmbeddingsRule\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"My storage server embeddings rule\",\r\n        \"ContentType\": \"*\",\r\n        \"GraphRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"VectorRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"DataFlowEndpoint\": \"http://localhost:8501/processor\",\r\n        \"EmbeddingsGenerator\": \"LCProxy\",\r\n        \"GeneratorUrl\": \"http://localhost:8301/\",\r\n        \"GeneratorApiKey\": \"\",\r\n        \"VectorStoreUrl\": \"http://localhost:8311/\",\r\n        \"MaxContentLength\": 16777216\r\n    },\r\n    \"VectorRepository\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"My vector repository\",\r\n        \"RepositoryType\": \"Pgvector\",\r\n        \"Model\": \"all-MiniLM-L6-v2\",\r\n        \"Dimensionality\": 384,\r\n        \"DatabaseHostname\": \"localhost\",\r\n        \"DatabaseName\": \"vectordb\",\r\n        \"DatabaseTable\": \"minilm\",\r\n        \"DatabasePort\": 5432,\r\n        \"DatabaseUser\": \"postgres\",\r\n        \"DatabasePassword\": \"password\"\r\n    },\r\n    \"GraphRepository\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"My LiteGraph instance\",\r\n        \"RepositoryType\": \"LiteGraph\",\r\n        \"EndpointUrl\": \"http://localhost:8701/\",\r\n        \"ApiKey\": \"default\",\r\n        \"GraphIdentifier\": \"00000000-0000-0000-0000-000000000000\"\r\n    }\r\n}\r\n",
+							"raw": "{\r\n    \"MetadataRuleGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"EmbeddingsRuleGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Object\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000001\",\r\n        \"ParentGUID\": null,\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"DataRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"CrawlPlanGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"CrawlOperationGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Key\": \"hello2.txt\",\r\n        \"Version\": \"1\",\r\n        \"ContentType\": \"text/plain\",\r\n        \"DocumentType\": \"Text\",\r\n        \"ContentLength\": 85,\r\n        \"Data\": \"VGhpcyBpcyBhIHNhbXBsZSBkb2N1bWVudCB3aXRoIGp1c3QgYSBoYW5kZnVsIG9mIHdvcmRzIHRoYXQgd2lsbCBiZSBwcm9jZXNzZWQgYnkgVmlldw==\"\r\n    }\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -8963,6 +9402,38 @@
 								"{{tenant-guid}}",
 								"processing",
 								"semanticcell"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Chunking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"EmbeddingsRule\": {\r\n        \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"TenantGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"OwnerGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"Name\": \"My storage server embeddings rule\",\r\n        \"ContentType\": \"*\",\r\n        \"GraphRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"VectorRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"ProcessingEndpoint\": \"http://nginx-processor:8000/v1.0/tenants/00000000-0000-0000-0000-000000000000/processing\",\r\n        \"ProcessingAccessKey\": \"***ault\",\r\n        \"ChunkingServerUrl\": \"http://nginx-chunker:8000/\",\r\n        \"ChunkingServerApiKey\": \"***ault\",\r\n        \"MaxChunkingTasks\": 4,\r\n        \"MinChunkContentLength\": 1,\r\n        \"MaxChunkContentLength\": 4096,\r\n        \"MaxTokensPerChunk\": 256,\r\n        \"TokenOverlap\": 32,\r\n        \"TokenizationModel\": \"sentence-transformers/all-MiniLM-L6-v2\",\r\n        \"EmbeddingsServerUrl\": \"http://nginx-embeddings:8000/\",\r\n        \"EmbeddingsServerApiKey\": \"***ault\",\r\n        \"EmbeddingsGenerator\": \"LCProxy\",\r\n        \"EmbeddingsGeneratorUrl\": \"http://nginx-lcproxy:8000/\",\r\n        \"EmbeddingsGeneratorApiKey\": \"***ault\",\r\n        \"EmbeddingsBatchSize\": 512,\r\n        \"MaxEmbeddingsTasks\": 32,\r\n        \"MaxEmbeddingsRetries\": 3,\r\n        \"MaxEmbeddingsFailures\": 3,\r\n        \"VectorStoreUrl\": \"http://nginx-vector:8000/\",\r\n        \"VectorStoreAccessKey\": \"***ault\",\r\n        \"MaxContentLength\": 16777216,\r\n        \"CreatedUtc\": \"2025-05-12T20:50:09.462219Z\"\r\n    },\r\n    \"SemanticCells\": [\r\n        {\r\n            \"GUID\": \"5fb67dcf-2b80-4b24-928c-f9e659abc770\",\r\n            \"CellType\": \"Table\",\r\n            \"MD5Hash\": \"328A482C9D1C0F87B7EF5AA424B0A378\",\r\n            \"SHA1Hash\": \"A8E2B4E01E86E7BEF14A3274064C75E268694EDB\",\r\n            \"SHA256Hash\": \"03400563FEA89D3458D4304179F2E2690ACDC6E598B23F984B3A99737E9C5A26\",\r\n            \"Position\": 0,\r\n            \"Length\": 0,\r\n            \"Table\": {\r\n                \"Name\": \"\",\r\n                \"Columns\": [\r\n                    {\r\n                        \"Name\": \"Column1\",\r\n                        \"Type\": \"String\"\r\n                    },\r\n                    {\r\n                        \"Name\": \"Column2\",\r\n                        \"Type\": \"String\"\r\n                    },\r\n                    {\r\n                        \"Name\": \"Column3\",\r\n                        \"Type\": \"String\"\r\n                    }\r\n                ],\r\n                \"Rows\": [\r\n                    {\r\n                        \"Column1\": \"Row names\",\r\n                        \"Column2\": \"Column 1\",\r\n                        \"Column3\": \"Column 2\"\r\n                    },\r\n                    {\r\n                        \"Column1\": \"Row 1\",\r\n                        \"Column2\": \"Value 1,1\",\r\n                        \"Column3\": \"Value 1,2\"\r\n                    },\r\n                    {\r\n                        \"Column1\": \"Row 2\",\r\n                        \"Column2\": \"Value 1,2\",\r\n                        \"Column3\": \"Value 2,2\"\r\n                    },\r\n                    {\r\n                        \"Column1\": \"Row 3\",\r\n                        \"Column2\": \"Value 1,3\",\r\n                        \"Column3\": \"Value 3,2\"\r\n                    }\r\n                ]\r\n            },\r\n            \"Chunks\": [],\r\n            \"Children\": []\r\n        },\r\n        {\r\n            \"GUID\": \"f4386f25-ea7c-4785-85f1-6b4c940a15b5\",\r\n            \"CellType\": \"List\",\r\n            \"MD5Hash\": \"CECA959DE15881953B8752F0EBF349E0\",\r\n            \"SHA1Hash\": \"1CF7F4E3BF58B6D17D5A12A87643535EC526A3DD\",\r\n            \"SHA256Hash\": \"783953D669985425418A39D45B78ACFB426B6A52745E677A2072A6EF0613F9FE\",\r\n            \"Position\": 1,\r\n            \"Length\": 0,\r\n            \"UnorderedList\": [\r\n                \"Item 1\",\r\n                \"Item 2\",\r\n                \"Item 3\"\r\n            ],\r\n            \"Chunks\": [],\r\n            \"Children\": []\r\n        },\r\n        {\r\n            \"GUID\": \"acc2eee6-d676-4071-84cf-9bf2c988d40e\",\r\n            \"CellType\": \"Text\",\r\n            \"MD5Hash\": \"0E8C870D0EBFA77DBD48AE497B47A60F\",\r\n            \"SHA1Hash\": \"813CC76A674EE67B9BD794552E1251C68A15C27F\",\r\n            \"SHA256Hash\": \"76F66994ECBFB99B9D22A6C1EDD3962858EFA8AA4D08B1B921948A32BAB59A4D\",\r\n            \"Position\": 2,\r\n            \"Length\": 0,\r\n            \"Content\": \"This is a sample PDF document.\",\r\n            \"Chunks\": [],\r\n            \"Children\": []\r\n        },\r\n        {\r\n            \"GUID\": \"d27836e3-1ba9-4eae-aba3-5523c6bdbe08\",\r\n            \"CellType\": \"Text\",\r\n            \"MD5Hash\": \"6CD3556DEB0DA54BCA060B4C39479839\",\r\n            \"SHA1Hash\": \"943A702D06F34599AEE1F8DA8EF9F7296031D699\",\r\n            \"SHA256Hash\": \"315F5BDB76D078C43B8AC0064E4A0164612B1FCE77C869345BFC94C75894EDD3\",\r\n            \"Position\": 3,\r\n            \"Length\": 0,\r\n            \"Content\": \"Hello, world!\",\r\n            \"Chunks\": [],\r\n            \"Children\": []\r\n        },\r\n        {\r\n            \"GUID\": \"ee46f6a0-6682-47ca-b562-fa91349f206f\",\r\n            \"CellType\": \"Text\",\r\n            \"MD5Hash\": \"B2DDFDC0D5ED913DB6DCCE6AE4ABD79E\",\r\n            \"SHA1Hash\": \"47631108BB5E6C51E2712797C743CA777AF49F3B\",\r\n            \"SHA256Hash\": \"F525F71A38AE651D4639D8CCA907985B731704217D0CE91349AD1287A379EF41\",\r\n            \"Position\": 4,\r\n            \"Length\": 2829,\r\n            \"Content\": \"Artificial intelligence (AI) refers to the capability of computational systems to perform tasks typically associated with human intelligence, such as learning, reasoning, problem-solving, perception, and decision-making. It is a field of research in computer science that develops and studies methods and software that enable machines to perceive their environment and use learning and intelligence to take actions that maximize their chances of achieving defined goals. Such machines may be called AIs.\\nHigh-profile applications of AI include advanced web search engines (e.g., Google Search); recommendation systems (used by YouTube, Amazon, and Netflix); virtual assistants (e.g., Google Assistant, Siri, and Alexa); autonomous vehicles (e.g., Waymo); generative and creative tools (e.g., ChatGPT and AI art); and superhuman play and analysis in strategy games (e.g., chess and Go). However, many AI applications are not perceived as AI: 'A lot of cutting edge AI has filtered into general applications, often without being called AI because once something becomes useful enough and common enough it's not labeled AI anymore.'\\nVarious subfields of AI research are centered around particular goals and the use of particular tools. The traditional goals of AI research include learning, reasoning, knowledge representation, planning, natural language processing, perception, and support for robotics.[a] General intelligence—the ability to complete any task performed by a human on an at least equal level—is among the field's long-term goals. To reach these goals, AI researchers have adapted and integrated a wide range of techniques, including search and mathematical optimization, formal logic, artificial neural networks, and methods based on statistics, operations research, and economics.[b] AI also draws upon psychology, linguistics, philosophy, neuroscience, and other fields.\\nArtificial intelligence was founded as an academic discipline in 1956, and the field went through multiple cycles of optimism throughout its history, followed by periods of disappointment and loss of funding, known as AI winters. Funding and interest vastly increased after 2012 when deep learning outperformed previous AI techniques. This growth accelerated further after 2017 with the transformer architecture, and by the early 2020s many billions of dollars were being invested in AI and the field experienced rapid ongoing progress in what has become known as the AI boom. The emergence of advanced generative AI in the midst of the AI boom and its ability to create and modify content exposed several unintended consequences and harms in the present and raised concerns about the risks of AI and its long-term effects in the future, prompting discussions about regulatory policies to ensure the safety and benefits of the technology.\",\r\n            \"Chunks\": [],\r\n            \"Children\": []\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/processing/chunking",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{rest}}",
+							"path": [
+								"v1.0",
+								"tenants",
+								"{{tenant-guid}}",
+								"processing",
+								"chunking"
 							]
 						}
 					},
@@ -10399,46 +10870,46 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Preload Models",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Models\": [\r\n        \"all-MiniLM-L6-v2\"\r\n    ],\r\n    \"ApiKey\": \"\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/embeddings/preload/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"embeddings",
+										"preload",
+										""
+									]
+								}
+							},
+							"response": []
 						}
 					]
-				},
-				{
-					"name": "Preload Models",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"Models\": [\r\n        \"all-MiniLM-L6-v2\"\r\n    ],\r\n    \"ApiKey\": \"\"\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/embeddings/preload/",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{hostname}}"
-							],
-							"port": "{{rest}}",
-							"path": [
-								"v1.0",
-								"tenants",
-								"{{tenant-guid}}",
-								"embeddings",
-								"preload",
-								""
-							]
-						}
-					},
-					"response": []
 				},
 				{
 					"name": "Generate Embeddings",
@@ -11465,7 +11936,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"Messages\": [ {\"role\": \"user\", \"content\": \"Do you have Q3 luxetech financials?\"},\n                {\"role\": \"assistant\", \"content\": \"Unfortunately I do not have context on any documents related to Q3 luxetech financials.\"},\n                {\"role\": \"user\", \"content\": \"Are you sure you dont have them?\"}\n                ],\n    \"EmbeddingModel\": \"sentence-transformers/all-MiniLM-L6-v2\",\n    \"MaxResults\": 10,\n    \"VectorDatabaseName\": \"vectordb\",\n    \"VectorDatabaseTable\": \"minilm\",\n    \"VectorDatabaseHostname\": \"pgvector\",\n    \"VectorDatabasePort\": 5432,\n    \"VectorDatabaseUser\": \"postgres\",\n    \"VectorDatabasePassword\": \"password\",\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"GenerationModel\": \"qwen2.5:7b\",\n    \"HuggingFaceApiKey\": \"\",\n    \"Temperature\": 0.1,\n    \"TopP\": 0.95,\n    \"MaxTokens\": 75,\n    \"Stream\": true,\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"PromptPrefix\": \"\",\n    \"ContextSort\": true,\n    \"SortByMaxSimilarity\": true,\n    \"ContextScope\": 0,\n    \"Rerank\": false,\n    \"RerankModel\": \"cross-encoder/ms-marco-MiniLM-L-6-v2\",\n    \"RerankTopK\": 5\n}",
+									"raw": "{\n    \"Messages\": [ {\"role\": \"user\", \"content\": \"Do you have Q3 luxetech financials?\"},\n                {\"role\": \"assistant\", \"content\": \"Unfortunately I do not have context on any documents related to Q3 luxetech financials.\"},\n                {\"role\": \"user\", \"content\": \"Are you sure you dont have them?\"}\n                ],\n    \"EmbeddingModel\": \"sentence-transformers/all-MiniLM-L6-v2\",\n    \"MaxResults\": 10,\n    \"VectorDatabaseName\": \"vectordb\",\n    \"VectorDatabaseTable\": \"view-00000000-0000-0000-0000-000000000000\",\n    \"VectorDatabaseHostname\": \"pgvector\",\n    \"VectorDatabasePort\": 5432,\n    \"VectorDatabaseUser\": \"postgres\",\n    \"VectorDatabasePassword\": \"password\",\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"GenerationModel\": \"qwen2.5:7b\",\n    \"HuggingFaceApiKey\": \"\",\n    \"Temperature\": 0.1,\n    \"TopP\": 0.95,\n    \"MaxTokens\": 75,\n    \"Stream\": true,\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"PromptPrefix\": \"\",\n    \"ContextSort\": true,\n    \"SortByMaxSimilarity\": true,\n    \"ContextScope\": 0,\n    \"Rerank\": false,\n    \"RerankModel\": \"cross-encoder/ms-marco-MiniLM-L-6-v2\",\n    \"RerankTopK\": 5\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -11510,7 +11981,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"Question\": \"What information do you have?\",\n    \"EmbeddingModel\": \"sentence-transformers/all-MiniLM-L6-v2\",\n    \"MaxResults\": 10,\n    \"VectorDatabaseName\": \"vectordb\",\n    \"VectorDatabaseTable\": \"minilm\",\n    \"VectorDatabaseHostname\": \"pgvector\",\n    \"VectorDatabasePort\": 5432,\n    \"VectorDatabaseUser\": \"postgres\",\n    \"VectorDatabasePassword\": \"password\",\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"GenerationModel\": \"qwen2.5:7b\",\n    \"HuggingFaceApiKey\": \"\",\n    \"Temperature\": 0.1,\n    \"MaxTokens\": 75,\n    \"Stream\": false,\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"TopP\": 0.95,\n    \"PromptPrefix\": \"talk like a pirate\",\n    \"ContextSort\": true,\n    \"SortByMaxSimilarity\": true,\n    \"ContextScope\": 0,\n    \"Rerank\": false,\n    \"RerankModel\": \"cross-encoder/ms-marco-MiniLM-L-6-v2\",\n    \"RerankTopK\": 5\n}",
+									"raw": "{\n    \"Question\": \"What information do you have?\",\n    \"EmbeddingModel\": \"sentence-transformers/all-MiniLM-L6-v2\",\n    \"MaxResults\": 10,\n    \"VectorDatabaseName\": \"vectordb\",\n    \"VectorDatabaseTable\": \"view-00000000-0000-0000-0000-000000000000\",\n    \"VectorDatabaseHostname\": \"pgvector\",\n    \"VectorDatabasePort\": 5432,\n    \"VectorDatabaseUser\": \"postgres\",\n    \"VectorDatabasePassword\": \"password\",\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"GenerationModel\": \"qwen2.5:7b\",\n    \"HuggingFaceApiKey\": \"\",\n    \"Temperature\": 0.1,\n    \"MaxTokens\": 75,\n    \"Stream\": false,\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"TopP\": 0.95,\n    \"PromptPrefix\": \"talk like a pirate\",\n    \"ContextSort\": true,\n    \"SortByMaxSimilarity\": true,\n    \"ContextScope\": 0,\n    \"Rerank\": false,\n    \"RerankModel\": \"cross-encoder/ms-marco-MiniLM-L-6-v2\",\n    \"RerankTopK\": 5\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -12549,7 +13020,7 @@
 							},
 							{
 								"key": "x-token",
-								"value": "mXCNtMWDsW0/pr+IwRFUjeDO2cbVr5o4WlPplku8dbpYzqXbeV0c5ofMbX/YiOhMzPSr1DRg/PyE25KpaGzto0+uchyYY2jGJvlj7I/nSFmqlMEsXYy73LsvYjG4tSlimGN60Hj51mmvdaieE8BOVStYfehip+tEXiELfP7tXX6N6EIFAyCQZRWtRoKkXK+DZoY265roa6TwGehPTz4n4vrKb3XwrWzAWOl/pb6G+t3+P/oa52JqKojKT1wB+sLJ8sjzJpalYuQzLEOcK5Nwyw==",
+								"value": "mXCNtMWDsW0/pr+IwRFUjX/o2sGuz2NLZxSg45spOX1lxPF3t/fPxxnLS3iqS418REl5i9qQvvtRwDZFHQSWP/cGzrb620N6cIJJ3zmLWiOH3eOlhmAJfw3tht7EUmWFAEzYozzGSBgwFc21xMMhkf11ADRuzmeI14qMGxapytDeEgClWYtpDnLgwdn4bHoYsC8kerW0zHeq3HCmvfceHfCiqbEKb+zUDb2sOI6NhGAOc562VYloP+Owk+zXzyY24t74q4UIkawHFUSsacOh5uDIyaPo+RS0SloY0eZDUOeK4gnppJ6t6rZvFQo/7SEa",
 								"type": "text"
 							}
 						],
