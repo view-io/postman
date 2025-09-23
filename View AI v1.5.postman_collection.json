@@ -8744,6 +8744,11 @@
 					"item": [
 						{
 							"name": "Create",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -8756,7 +8761,13 @@
 									]
 								},
 								"method": "PUT",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n    \"Key\": \"foo.txt\"\r\n}"
@@ -10089,7 +10100,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Name\": \"My second collection\",\r\n    \"AdditionalData\": \"Yet another collection\"\r\n}",
+									"raw": "{\r\n    \"Name\": \"My collection\",\r\n    \"AdditionalData\": \"Yet another collection\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10180,7 +10191,7 @@
 							"response": []
 						},
 						{
-							"name": "Retrieve",
+							"name": "Retrieve by GUID",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -10401,7 +10412,7 @@
 							"response": []
 						},
 						{
-							"name": "Delete by key and version",
+							"name": "Delete by key",
 							"request": {
 								"method": "DELETE",
 								"header": [
@@ -12019,7 +12030,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"Question\": \"Tell a very short joke?\",\n    \"ModelName\": \"llama3.1:latest\",\n    \"Temperature\": 0.1,\n    \"TopP\": 0.95,\n    \"MaxTokens\": 75,\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"OllamaHostname\": \"192.168.86.250\",\n    \"OllamaPort\": 11434,\n    \"Stream\": false\n}",
+									"raw": "{\n    \"Question\": \"Tell a very short joke?\",\n    \"GenerationModel\": \"gemma3:4b\",\n    \"Temperature\": 0.1,\n    \"TopP\": 0.95,\n    \"MaxTokens\": 75,\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"OllamaHostname\": \"192.168.86.30\",\n    \"OllamaPort\": 11434,\n    \"Stream\": false\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -12052,7 +12063,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"Messages\": [{\"role\": \"system\", \"content\": \"You are a sad AI assistant.\"}, \n                {\"role\": \"user\", \"content\": \"Are you happy?\"},\n                {\"role\": \"assistant\", \"content\": \"While I can understand your curiosity, I don't experience emotions or feelings because I'm a miserable machine designed to process information and assist with menial tasks.\"},\n                {\"role\": \"user\", \"content\": \"Are you sure?\"}\n                ],\n    \"ModelName\": \"qwen2.5:7b\",\n    \"Temperature\": 0.1,\n    \"TopP\": 0.95,\n    \"MaxTokens\": 75,\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"OllamaHostname\": \"ollama\",\n    \"OllamaPort\": 11434,\n    \"Stream\": false\n}",
+									"raw": "{\n    \"Messages\": [{\"role\": \"system\", \"content\": \"You are a sad AI assistant.\"}, \n                {\"role\": \"user\", \"content\": \"Are you happy?\"},\n                {\"role\": \"assistant\", \"content\": \"While I can understand your curiosity, I don't experience emotions or feelings because I'm a miserable machine designed to process information and assist with menial tasks.\"},\n                {\"role\": \"user\", \"content\": \"Are you sure?\"}\n                ],\n    \"GenerationModel\": \"gemma3:4b\",\n    \"Temperature\": 0.1,\n    \"TopP\": 0.95,\n    \"MaxTokens\": 75,\n    \"GenerationProvider\": \"ollama\",\n    \"GenerationApiKey\": \"\",\n    \"OllamaHostname\": \"192.168.86.30\",\n    \"OllamaPort\": 11434,\n    \"Stream\": false\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -13135,7 +13146,7 @@
 		},
 		{
 			"key": "hostname",
-			"value": "192.168.6.129"
+			"value": "view.homedns.org"
 		},
 		{
 			"key": "accesskey",
