@@ -6061,6 +6061,47 @@
 							"response": []
 						},
 						{
+							"name": "Write Git Data Repository",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\": \"My Git repository\",\r\n    \"RepositoryType\": \"Git\",\r\n    \"GitEndpointUrl\": \"https://github.com/litegraphdb/litegraph\",\r\n    \"GitAuthToken\": null\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/datarepositories",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"datarepositories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Update Data Repository",
 							"request": {
 								"auth": {
@@ -10210,6 +10251,40 @@
 										"00000000-0000-0000-0000-000000000000",
 										"documents",
 										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve by key",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/collections/00000000-0000-0000-0000-000000000000/documents?key=blake.json&versionId=1",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"collections",
+										"00000000-0000-0000-0000-000000000000",
+										"documents"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "blake.json"
+										},
+										{
+											"key": "versionId",
+											"value": "1"
+										}
 									]
 								}
 							},
