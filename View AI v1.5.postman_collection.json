@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bb6a855d-e4f3-4fbc-9d87-d7d543c91304",
+		"_postman_id": "5b445f64-4722-4d3d-af01-868bcb92d5f5",
 		"name": "View AI v1.5",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "37359441"
@@ -13100,6 +13100,10 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Assistant",
+			"item": []
 		}
 	],
 	"auth": {
