@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5b445f64-4722-4d3d-af01-868bcb92d5f5",
+		"_postman_id": "963b7f35-8cfb-4453-a3a8-e348642a7762",
 		"name": "View AI v1.5",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "37359441"
@@ -13103,7 +13103,1541 @@
 		},
 		{
 			"name": "Assistant",
-			"item": []
+			"item": [
+				{
+					"name": "Health Checks Copy",
+					"item": []
+				},
+				{
+					"name": "Chat",
+					"item": [
+						{
+							"name": "Chat Completions",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"What is machine learning?\"\n    }\n  ],\n  \"GenerationModel\": \"llama3.1:8b\",\n  \"GenerationProvider\": \"ollama\",\n  \"Stream\": true,\n  \"Temperature\": 0.7,\n  \"MaxTokens\": 512,\n  \"OllamaHostname\": \"ollama\",\n  \"OllamaPort\": 11434\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/chat/completions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"chat",
+										"completions"
+									]
+								},
+								"description": "Basic chat completions without RAG retrieval."
+							},
+							"response": []
+						},
+						{
+							"name": "RAG Chat",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"What does the documentation say about embeddings?\"\n    }\n  ],\n  \"Documents\": null,\n  \"EnableDocumentFilter\": true,\n  \"GenerationModel\": \"llama3.1:8b\",\n  \"GenerationProvider\": \"ollama\",\n  \"EmbeddingModel\": \"all-MiniLM-L6-v2\",\n  \"MaxResults\": 20,\n  \"VectorDatabaseName\": \"vectordb\",\n  \"VectorDatabaseTable\": \"minilm\",\n  \"VectorDatabaseHostname\": \"pgvector\",\n  \"VectorDatabasePort\": 5432,\n  \"VectorDatabaseUser\": \"postgres\",\n  \"VectorDatabasePassword\": \"password\",\n  \"Stream\": true,\n  \"Temperature\": 0.7,\n  \"MaxTokens\": 256,\n  \"SystemPrompt\": \"Use the following pieces of context to answer the question; if the context is not enough, politely explain that you don't have relevant context. Don't make up answers.\",\n  \"Rerank\": false,\n  \"RerankModel\": \"cross-encoder/ms-marco-MiniLM-L-6-v2\",\n  \"RerankTopK\": 3,\n  \"UseCitations\": false\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/rag/chat",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"rag",
+										"chat"
+									]
+								},
+								"description": "RAG-enabled chat with vector database integration and document retrieval."
+							},
+							"response": []
+						},
+						{
+							"name": "Chat with Config",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Tell me about the product features\"\n    }\n  ],\n  \"stream\": true,\n  \"documents\": null\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/chat/{{configGuid}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"chat",
+										"{{configGuid}}"
+									]
+								},
+								"description": "Chat using a specific configuration GUID. All settings from the config are applied."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Conversations",
+					"item": [
+						{
+							"name": "Create Conversation (Streaming)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"config_guid\": \"{{configGuid}}\",\n  \"title\": \"Discussion about AI\",\n  \"message\": \"What are the key benefits of using RAG?\",\n  \"metadata\": {\n    \"source\": \"web_app\",\n    \"user_id\": \"user123\"\n  },\n  \"documents\": null\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"conversations"
+									]
+								},
+								"description": "Create a new conversation with the first user message. Returns Server-Sent Events (SSE) stream."
+							},
+							"response": []
+						},
+						{
+							"name": "List Conversations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations?limit=100&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"conversations"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "Maximum conversations to return (1-1000)"
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "Number of conversations to skip"
+										}
+									]
+								},
+								"description": "List conversations for the authenticated user/session with pagination."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Conversation with Messages",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations/{{conversationId}}?message_limit=100&message_offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"conversations",
+										"{{conversationId}}"
+									],
+									"query": [
+										{
+											"key": "message_limit",
+											"value": "100",
+											"description": "Max messages to return"
+										},
+										{
+											"key": "message_offset",
+											"value": "0",
+											"description": "Messages to skip"
+										}
+									]
+								},
+								"description": "Get conversation details with message history."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Messages",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations/{{conversationId}}/messages?limit=100&offset=0&include_superseded=false",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"conversations",
+										"{{conversationId}}",
+										"messages"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "Maximum messages to return"
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "Messages to skip"
+										},
+										{
+											"key": "include_superseded",
+											"value": "false",
+											"description": "Include superseded messages"
+										}
+									]
+								},
+								"description": "Get message history for a conversation with pagination."
+							},
+							"response": []
+						},
+						{
+							"name": "Add Message (Streaming)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"message\": \"Can you elaborate on that?\",\n  \"documents\": null\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations/{{conversationId}}/messages",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"conversations",
+										"{{conversationId}}",
+										"messages"
+									]
+								},
+								"description": "Add a message to existing conversation. Returns SSE stream with RAG response."
+							},
+							"response": []
+						},
+						{
+							"name": "Update Message (Streaming)",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"message\": \"Updated message content\",\n  \"documents\": null\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations/{{conversationId}}/messages/{{messageId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"conversations",
+										"{{conversationId}}",
+										"messages",
+										"{{messageId}}"
+									]
+								},
+								"description": "Update user message content and automatically regenerate response. Supersedes all subsequent messages. Only user messages can be edited."
+							},
+							"response": []
+						},
+						{
+							"name": "Regenerate from Message (Streaming)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"message\": \"Optional: edit message before regenerating\",\n  \"documents\": null\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations/{{conversationId}}/messages/{{messageId}}/regenerate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"conversations",
+										"{{conversationId}}",
+										"messages",
+										"{{messageId}}",
+										"regenerate"
+									]
+								},
+								"description": "Regenerate response from a specific message. Optionally edit the message content before regenerating. Supersedes all subsequent messages."
+							},
+							"response": []
+						},
+						{
+							"name": "Update Conversation",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"Updated conversation title\",\n  \"metadata\": {\n    \"tags\": [\"important\", \"archived\"],\n    \"custom_field\": \"value\"\n  }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations/{{conversationId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"conversations",
+										"{{conversationId}}"
+									]
+								},
+								"description": "Update conversation metadata (title, metadata)."
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Conversation",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations/{{conversationId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"conversations",
+										"{{conversationId}}"
+									]
+								},
+								"description": "Delete a conversation and all its messages."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Threads (Legacy)",
+					"item": [
+						{
+							"name": "List Chat Threads",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/threads?assistant_config_guid={{configGuid}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"threads"
+									],
+									"query": [
+										{
+											"key": "assistant_config_guid",
+											"value": "{{configGuid}}",
+											"description": "Optional: Filter by config GUID"
+										}
+									]
+								},
+								"description": "List all chat threads, optionally filtered by assistant config."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Chat Thread",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/threads/:guid",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"threads",
+										":guid"
+									],
+									"variable": [
+										{
+											"key": "guid",
+											"value": "thread-guid"
+										}
+									]
+								},
+								"description": "Get a specific chat thread by GUID."
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Thread Exists",
+							"request": {
+								"method": "HEAD",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/threads/:guid",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"threads",
+										":guid"
+									],
+									"variable": [
+										{
+											"key": "guid",
+											"value": "thread-guid"
+										}
+									]
+								},
+								"description": "Check if a chat thread exists without retrieving its content."
+							},
+							"response": []
+						},
+						{
+							"name": "Create Chat Thread",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Title\": \"New Discussion\",\n  \"Description\": \"Discussion about AI\",\n  \"Messages\": [],\n  \"AssistantConfigGUID\": \"{{configGuid}}\",\n  \"Metadata\": {\n    \"category\": \"research\"\n  }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/threads",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"threads"
+									]
+								},
+								"description": "Create a new chat thread."
+							},
+							"response": []
+						},
+						{
+							"name": "Append Message to Thread",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"role\": \"user\",\n  \"content\": \"What is the weather like?\",\n  \"metadata\": {\n    \"source\": \"mobile\"\n  }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/threads/:guid/messages",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"threads",
+										":guid",
+										"messages"
+									],
+									"variable": [
+										{
+											"key": "guid",
+											"value": "thread-guid"
+										}
+									]
+								},
+								"description": "Append a message to an existing chat thread."
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Chat Thread",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/threads/:guid",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"threads",
+										":guid"
+									],
+									"variable": [
+										{
+											"key": "guid",
+											"value": "thread-guid"
+										}
+									]
+								},
+								"description": "Delete a chat thread."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Configs",
+					"item": [
+						{
+							"name": "List Configs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/configs",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"configs"
+									]
+								},
+								"description": "List all RAG configurations for the tenant."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Config",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/configs/{{configGuid}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"configs",
+										"{{configGuid}}"
+									]
+								},
+								"description": "Get a specific RAG configuration by GUID."
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Config Exists",
+							"request": {
+								"method": "HEAD",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/configs/{{configGuid}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"configs",
+										"{{configGuid}}"
+									]
+								},
+								"description": "Check if a configuration exists without retrieving its content."
+							},
+							"response": []
+						},
+						{
+							"name": "Create Config",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Name\": \"Production RAG Config\",\n  \"Description\": \"Configuration for production environment\",\n  \"SystemPrompt\": \"Use the following pieces of context to answer the question. If the context is not enough, explain that you don't have relevant context.\",\n  \"MaxResults\": 20,\n  \"IsPublic\": false,\n  \"EmbeddingModel\": \"all-MiniLM-L6-v2\",\n  \"EmbeddingProvider\": \"lcproxy\",\n  \"VectorDatabaseName\": \"vectordb\",\n  \"VectorDatabaseTable\": \"minilm\",\n  \"VectorDatabaseHostname\": \"pgvector\",\n  \"VectorDatabasePort\": 5432,\n  \"VectorDatabaseUser\": \"postgres\",\n  \"VectorDatabasePassword\": \"password\",\n  \"GenerationProvider\": \"ollama\",\n  \"GenerationModel\": \"llama3.1:8b\",\n  \"Temperature\": 0.7,\n  \"TopP\": 0.95,\n  \"MaxTokens\": 512,\n  \"OllamaHostname\": \"ollama\",\n  \"OllamaPort\": 11434,\n  \"Rerank\": false,\n  \"RerankModel\": \"cross-encoder/ms-marco-MiniLM-L-6-v2\",\n  \"RerankTopK\": 3,\n  \"RerankLevel\": \"Chunk\",\n  \"RerankAggregation\": \"max\",\n  \"TimestampEnabled\": true,\n  \"TimestampFormat\": \"Date\",\n  \"TimestampTimezone\": \"UTC\",\n  \"UseCitations\": false,\n  \"EnableDocumentFilter\": false,\n  \"DefaultDocuments\": [],\n  \"ChatOnly\": false,\n  \"HybridSearch\": {\n    \"Enabled\": true,\n    \"Mode\": \"rrf\",\n    \"Alpha\": 0.5,\n    \"KSemantic\": 60,\n    \"KKeyword\": 60,\n    \"KFinal\": 20,\n    \"TsConfig\": \"english\"\n  }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/configs",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"configs"
+									]
+								},
+								"description": "Create a new RAG configuration."
+							},
+							"response": []
+						},
+						{
+							"name": "Update Config",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Name\": \"Updated Config Name\",\n  \"Description\": \"Updated description\",\n  \"Temperature\": 0.8,\n  \"MaxTokens\": 1024\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/configs/{{configGuid}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"configs",
+										"{{configGuid}}"
+									]
+								},
+								"description": "Update an existing RAG configuration."
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Config",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/configs/{{configGuid}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"configs",
+										"{{configGuid}}"
+									]
+								},
+								"description": "Delete a RAG configuration."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Models",
+					"item": [
+						{
+							"name": "List Models",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"OllamaHostname\": \"localhost\",\n  \"OllamaPort\": 11434\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/models",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"models"
+									]
+								},
+								"description": "List all available Ollama models."
+							},
+							"response": []
+						},
+						{
+							"name": "Pull Model",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"ModelName\": \"llama3.1:8b\",\n  \"Source\": \"ollama\",\n  \"Stream\": true,\n  \"Insecure\": false,\n  \"OllamaHostname\": \"ollama\",\n  \"OllamaPort\": 11434\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/models/pull",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"models",
+										"pull"
+									]
+								},
+								"description": "Pull a model from Ollama registry."
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Model",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"ModelName\": \"llama3.1:8b\",\n  \"OllamaHostname\": \"localhost\",\n  \"OllamaPort\": 11434\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/models/delete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"models",
+										"delete"
+									]
+								},
+								"description": "Delete a model from Ollama."
+							},
+							"response": []
+						},
+						{
+							"name": "Load Model",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"ModelName\": \"llama3.1:8b\",\n  \"Unload\": false,\n  \"OllamaHostname\": \"localhost\",\n  \"OllamaPort\": 11434\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/models/load",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"models",
+										"load"
+									]
+								},
+								"description": "Load a model into memory or unload it."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Discovery (Search)",
+					"item": [
+						{
+							"name": "Config Search",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"query\": \"machine learning\",\n  \"documents\": null\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/search/{{configGuid}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"search",
+										"{{configGuid}}"
+									]
+								},
+								"description": "Execute similarity search using config settings without LLM generation. Returns relevant documents only."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Metrics",
+					"item": [
+						{
+							"name": "Get Config Metrics",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"StartDate\": \"2025-01-01T00:00:00Z\",\n  \"EndDate\": \"2025-01-31T23:59:59Z\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/configs/{{configGuid}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"configs",
+										"{{configGuid}}"
+									]
+								},
+								"description": "Get metrics for a specific configuration."
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Configs Metrics",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"StartDate\": \"2025-01-01T00:00:00Z\",\n  \"EndDate\": \"2025-01-31T23:59:59Z\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/configs",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"configs"
+									]
+								},
+								"description": "Get aggregated metrics for all configurations."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Request IDs",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"ConfigGuid\": null,\n  \"StartDate\": \"2025-01-01T00:00:00Z\",\n  \"EndDate\": \"2025-01-31T23:59:59Z\",\n  \"OperationTypes\": [\"rag_chat\"],\n  \"Limit\": 100,\n  \"Offset\": 0\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/requests",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"requests"
+									]
+								},
+								"description": "Get a paginated list of request IDs with optional filtering."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Request Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/requests/:request_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"requests",
+										":request_id"
+									],
+									"variable": [
+										{
+											"key": "request_id",
+											"value": "request-id"
+										}
+									]
+								},
+								"description": "Get detailed metrics for a specific request ID."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Hourly Metrics",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"OperationType\": \"rag_chat\",\n  \"StartDate\": \"2025-01-01T00:00:00Z\",\n  \"EndDate\": \"2025-01-31T23:59:59Z\",\n  \"Limit\": 100\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/hourly",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"hourly"
+									]
+								},
+								"description": "Get hourly aggregated metrics from TimescaleDB continuous aggregates."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Daily Metrics",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"OperationType\": \"rag_chat\",\n  \"StartDate\": \"2025-01-01T00:00:00Z\",\n  \"EndDate\": \"2025-01-31T23:59:59Z\",\n  \"Limit\": 100\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/daily",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"daily"
+									]
+								},
+								"description": "Get daily aggregated metrics from TimescaleDB continuous aggregates."
+							},
+							"response": []
+						},
+						{
+							"name": "Get 15-Minute Metrics",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"OperationType\": \"rag_chat\",\n  \"StartDate\": \"2025-01-16T00:00:00Z\",\n  \"EndDate\": \"2025-01-16T23:59:59Z\",\n  \"Limit\": 96\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/15min",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"15min"
+									]
+								},
+								"description": "Get 15-minute aggregated metrics for detailed short-term analysis."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Performance Summary",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/performance-summary?hours=24",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"performance-summary"
+									],
+									"query": [
+										{
+											"key": "hours",
+											"value": "24",
+											"description": "Number of hours to look back"
+										}
+									]
+								},
+								"description": "Get performance summary for the last N hours using continuous aggregates."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Performance Trend",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"OperationType\": \"rag_chat\",\n  \"Hours\": 24\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/performance-trend",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"performance-trend"
+									]
+								},
+								"description": "Get recent performance trends using 15-minute data for detailed short-term analysis."
+							},
+							"response": []
+						},
+						{
+							"name": "Get SLA Metrics",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"OperationType\": \"rag_chat\",\n  \"Service\": null,\n  \"Hours\": 24\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/sla",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"sla"
+									]
+								},
+								"description": "Get SLA compliance metrics with percentile analysis."
+							},
+							"response": []
+						},
+						{
+							"name": "Get SLA Breaches",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Hours\": 24,\n  \"ExecutionTimeThreshold\": 5000,\n  \"TtftThreshold\": 2000,\n  \"TpsThreshold\": 10,\n  \"Limit\": 100\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/sla/breaches",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"sla",
+										"breaches"
+									]
+								},
+								"description": "Get recent SLA breaches with configurable thresholds."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Realtime Metrics",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"OperationType\": \"rag_chat\",\n  \"Minutes\": 60\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/realtime",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"realtime"
+									]
+								},
+								"description": "Get real-time metrics using 15-minute continuous aggregates."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Histogram Analysis",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"OperationType\": \"rag_chat\",\n  \"Hours\": 24\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/histogram",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"histogram"
+									]
+								},
+								"description": "Get histogram analysis for latency distribution."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Tenant Comparison",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"TenantGuids\": [\"tenant-1\", \"tenant-2\"],\n  \"Hours\": 24\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/tenant-comparison",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"tenant-comparison"
+									]
+								},
+								"description": "Compare performance metrics across multiple tenants."
+							},
+							"response": []
+						},
+						{
+							"name": "Get 15min Tenant Comparison",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"TenantGuids\": [\"tenant-1\", \"tenant-2\"],\n  \"Hours\": 24\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/15min-comparison",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"15min-comparison"
+									]
+								},
+								"description": "Compare performance metrics across tenants using 15-minute data for short-term analysis."
+							},
+							"response": []
+						},
+						{
+							"name": "Detect Anomalies",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"OperationType\": \"rag_chat\",\n  \"Hours\": 24\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/anomalies?sensitivity=2.0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"anomalies"
+									],
+									"query": [
+										{
+											"key": "sensitivity",
+											"value": "2.0",
+											"description": "Sensitivity threshold for anomaly detection"
+										}
+									]
+								},
+								"description": "Detect performance anomalies using statistical analysis."
+							},
+							"response": []
+						},
+						{
+							"name": "Metrics Health Check",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/health",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"metrics",
+										"health"
+									]
+								},
+								"description": "Check the health of the metrics system."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "OpenAI Compatibility",
+					"item": [
+						{
+							"name": "OpenAI Chat Completions",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"model\": \"{{configGuid}}\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"What is RAG?\"\n    }\n  ],\n  \"stream\": true\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/openai/chat/completions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"openai",
+										"chat",
+										"completions"
+									]
+								},
+								"description": "OpenAI-compatible chat completions endpoint. Use config GUID as the model parameter."
+							},
+							"response": []
+						},
+						{
+							"name": "List OpenAI Models",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/openai/models",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenantGuid}}",
+										"assistant",
+										"openai",
+										"models"
+									]
+								},
+								"description": "List available RAG configurations in OpenAI-compatible format."
+							},
+							"response": []
+						}
+					]
+				}
+			]
 		}
 	],
 	"auth": {
