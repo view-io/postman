@@ -3175,7 +3175,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"example-metadata-rule-2\",\r\n    \"ContentType\": \"*\",\r\n    \"MaxContentLength\": 134217728,\r\n    \"ProcessingEndpoint\": \"http://localhost:8000/v1.0/tenants/00000000-0000-0000-0000-000000000000/processing\",\r\n    \"ProcessingAccessKey\": \"default\",\r\n    \"CleanupEndpoint\": \"http://localhost:8000/v1.0/tenants/00000000-0000-0000-0000-000000000000/processing/cleanup\",\r\n    \"CleanupAccessKey\": \"default\",\r\n    \"MinChunkContentLength\": 2,\r\n    \"MaxChunkContentLength\": 2048,\r\n    \"MaxTokensPerChunk\": 1920,\r\n    \"ShiftSize\": 256,\r\n    \"TopTerms\": 25,\r\n    \"CaseInsensitive\": true,\r\n    \"IncludeFlattened\": true,\r\n    \"DataCatalogEndpoint\": \"http://localhost:8000/\",\r\n    \"DataCatalogAccessKey\": \"default\",\r\n    \"DataCatalogType\": \"Lexi\",\r\n    \"DataCatalogCollection\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"GraphRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\"\r\n}"
+									"raw": "{\r\n    \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"example-metadata-rule-2\",\r\n    \"ContentType\": \"*\",\r\n    \"Prefix\": null,\r\n    \"Suffix\": null,\r\n    \"MaxContentLength\": 134217728,\r\n    \"ProcessingEndpoint\": \"http://localhost:8000/v1.0/tenants/00000000-0000-0000-0000-000000000000/processing\",\r\n    \"ProcessingAccessKey\": \"default\",\r\n    \"CleanupEndpoint\": \"http://localhost:8000/v1.0/tenants/00000000-0000-0000-0000-000000000000/processing/cleanup\",\r\n    \"CleanupAccessKey\": \"default\",\r\n    \"MinChunkContentLength\": 2,\r\n    \"MaxChunkContentLength\": 2048,\r\n    \"MaxTokensPerChunk\": 1920,\r\n    \"ShiftSize\": 256,\r\n    \"TopTerms\": 25,\r\n    \"CaseInsensitive\": true,\r\n    \"IncludeFlattened\": true,\r\n    \"DataCatalogEndpoint\": \"http://localhost:8000/\",\r\n    \"DataCatalogAccessKey\": \"default\",\r\n    \"DataCatalogType\": \"Lexi\",\r\n    \"DataCatalogCollection\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"GraphRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\"\r\n}"
 								},
 								"url": {
 									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/metadatarules",
@@ -3216,7 +3216,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"My updated metadata rule\",\r\n    \"ContentType\": \"*\",\r\n    \"MaxContentLength\": 134217728,\r\n    \"ProcessingEndpoint\": \"http://localhost:8000/v1.0/tenants/00000000-0000-0000-0000-000000000000/processing\",\r\n    \"ProcessingAccessKey\": \"default\",\r\n    \"CleanupEndpoint\": \"http://localhost:8000/v1.0/tenants/00000000-0000-0000-0000-000000000000/processing/cleanup\",\r\n    \"CleanupAccessKey\": \"default\",\r\n    \"MinChunkContentLength\": 2,\r\n    \"MaxChunkContentLength\": 2048,\r\n    \"MaxTokensPerChunk\": 1920,\r\n    \"ShiftSize\": 256,\r\n    \"TopTerms\": 25,\r\n    \"CaseInsensitive\": true,\r\n    \"IncludeFlattened\": true,\r\n    \"DataCatalogEndpoint\": \"http://localhost:8000/\",\r\n    \"DataCatalogAccessKey\": \"default\",\r\n    \"DataCatalogType\": \"Lexi\",\r\n    \"DataCatalogCollection\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"GraphRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\"\r\n}"
+									"raw": "{\r\n    \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"My updated metadata rule\",\r\n    \"ContentType\": \"*\",\r\n    \"Prefix\": null,\r\n    \"Suffix\": null,\r\n    \"MaxContentLength\": 134217728,\r\n    \"ProcessingEndpoint\": \"http://localhost:8000/v1.0/tenants/00000000-0000-0000-0000-000000000000/processing\",\r\n    \"ProcessingAccessKey\": \"default\",\r\n    \"CleanupEndpoint\": \"http://localhost:8000/v1.0/tenants/00000000-0000-0000-0000-000000000000/processing/cleanup\",\r\n    \"CleanupAccessKey\": \"default\",\r\n    \"MinChunkContentLength\": 2,\r\n    \"MaxChunkContentLength\": 2048,\r\n    \"MaxTokensPerChunk\": 1920,\r\n    \"ShiftSize\": 256,\r\n    \"TopTerms\": 25,\r\n    \"CaseInsensitive\": true,\r\n    \"IncludeFlattened\": true,\r\n    \"DataCatalogEndpoint\": \"http://localhost:8000/\",\r\n    \"DataCatalogAccessKey\": \"default\",\r\n    \"DataCatalogType\": \"Lexi\",\r\n    \"DataCatalogCollection\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"GraphRepositoryGUID\": \"00000000-0000-0000-0000-000000000000\"\r\n}"
 								},
 								"url": {
 									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/metadatarules/00000000-0000-0000-0000-000000000000",
@@ -3557,6 +3557,263 @@
 										"tenants",
 										"{{tenant-guid}}",
 										"embeddingsrules",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Summarization Rules",
+					"item": [
+						{
+							"name": "Enumerate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v2.0/tenants/{{tenant-guid}}/summarizationrules/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v2.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"summarizationrules",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/summarizationrules/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"summarizationrules",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/summarizationrules/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"summarizationrules",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Write",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"ModelProfileGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"example-metadata-rule-2\",\r\n    \"ContentType\": \"*\",\r\n    \"Prefix\": null,\r\n    \"Suffix\": null,\r\n    \"MaxContentLength\": 134217728,\r\n    \"Order\": \"BottomUp\",\r\n    \"SummarizationPrompt\": \"Task: Summarize the content below using the supplied context.\\nGuidance: Incorporate relevant contextual information into the summary.\\nLength: Maximum {tokens} tokens.\\nOutput format: Summary text only, without introductory or concluding remarks.\\n\\n=== CONTENT ===\\n{content}\\n\\n=== CONTEXT ===\\n{context}\",\r\n    \"MaxSummaryTokens\": 256,\r\n    \"MaxParallelTasks\": 4\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/summarizationrules",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"summarizationrules"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"ModelProfileGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"example-metadata-rule-2\",\r\n    \"ContentType\": \"*\",\r\n    \"Prefix\": null,\r\n    \"Suffix\": null,\r\n    \"MaxContentLength\": 134217728,\r\n    \"Order\": \"BottomUp\",\r\n    \"SummarizationPrompt\": \"Task: Summarize the content below using the supplied context.\\nGuidance: Incorporate relevant contextual information into the summary.\\nLength: Maximum {tokens} tokens.\\nOutput format: Summary text only, without introductory or concluding remarks.\\n\\n=== CONTENT ===\\n{content}\\n\\n=== CONTEXT ===\\n{context}\",\r\n    \"MaxSummaryTokens\": 256,\r\n    \"MaxParallelTasks\": 4\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/summarizationrules/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"summarizationrules",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"TenantGUID\": \"05b702a6-9c0e-4741-a465-581f2456e994\",\r\n    \"Name\": \"Another Storage Pool\",\r\n    \"Provider\": \"Disk\",\r\n    \"WriteMode\": \"GUID\",\r\n    \"UseSsl\": false,\r\n    \"DiskDirectory\": \"./disk2/\",\r\n    \"Dedupe\": false,\r\n    \"Compress\": \"None\",\r\n    \"EnableReadCaching\": false,\r\n    \"Encrypt\": \"None\"\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/summarizationrules/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"summarizationrules",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check Existence",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "HEAD",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/summarizationrules/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"summarizationrules",
 										"00000000-0000-0000-0000-000000000000"
 									]
 								}
