@@ -14833,6 +14833,92 @@
                 "description": "Check the health of the metrics system."
               },
               "response": []
+            },
+            {
+              "name": "Get Conversation Metrics Summary",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/conversations/{{conversationId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1.0",
+                    "tenants",
+                    "{{tenantGuid}}",
+                    "assistant",
+                    "metrics",
+                    "conversations",
+                    "{{conversationId}}"
+                  ]
+                },
+                "description": "Get comprehensive metrics summary for a specific conversation including request count, token usage, execution time, operation type breakdown, and hourly time-series data."
+              },
+              "response": []
+            },
+            {
+              "name": "Get Conversation Requests",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/conversations/{{conversationId}}/requests?limit=100&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1.0",
+                    "tenants",
+                    "{{tenantGuid}}",
+                    "assistant",
+                    "metrics",
+                    "conversations",
+                    "{{conversationId}}",
+                    "requests"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100",
+                      "description": "Maximum requests to return (min: 1, default: 100)"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0",
+                      "description": "Number of requests to skip (min: 0, default: 0)"
+                    }
+                  ]
+                },
+                "description": "Get paginated list of individual requests for a conversation with detailed metrics including request ID, operation type, execution time, tokens, status, and model information."
+              },
+              "response": []
+            },
+            {
+              "name": "Get Config Conversations Metrics",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/metrics/configs/{{configGuid}}/conversations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1.0",
+                    "tenants",
+                    "{{tenantGuid}}",
+                    "assistant",
+                    "metrics",
+                    "configs",
+                    "{{configGuid}}",
+                    "conversations"
+                  ]
+                },
+                "description": "Get metrics summary for all conversations associated with a specific config_guid. Returns an array of conversation metrics including request count, tokens, execution time, error rate, and conversation duration."
+              },
+              "response": []
             }
           ]
         },
