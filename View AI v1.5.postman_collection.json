@@ -13773,6 +13773,302 @@
           ]
         },
         {
+          "name": "Message Feedback",
+          "item": [
+            {
+              "name": "Submit Feedback for Message",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "x-token",
+                    "value": "user-token",
+                    "description": "User authentication token"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rating\": \"positive\",\n  \"details\": \"Very helpful and accurate response\",\n  \"tags\": [\"accurate\", \"helpful\"]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations/{{conversationId}}/messages/{{messageId}}/feedback",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["v1.0", "tenants", "{{tenantGuid}}", "assistant", "conversations", "{{conversationId}}", "messages", "{{messageId}}", "feedback"]
+                },
+                "description": "Submit feedback (thumbs up/down) for an assistant message. Creates new feedback or updates existing feedback if already submitted. Only assistant messages can receive feedback."
+              },
+              "response": [
+                {
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "x-token",
+                        "value": "user-token"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"rating\": \"positive\",\n  \"details\": \"Very helpful and accurate response\",\n  \"tags\": [\"accurate\", \"helpful\"]\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations/{{conversationId}}/messages/{{messageId}}/feedback",
+                      "host": ["{{baseUrl}}"],
+                      "path": ["v1.0", "tenants", "{{tenantGuid}}", "assistant", "conversations", "{{conversationId}}", "messages", "{{messageId}}", "feedback"]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [],
+                  "body": "{\n  \"feedback_id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n  \"message_id\": \"{{messageId}}\",\n  \"conversation_id\": \"{{conversationId}}\",\n  \"rating\": \"positive\",\n  \"details\": \"Very helpful and accurate response\",\n  \"tags\": [\"accurate\", \"helpful\"],\n  \"metadata\": null,\n  \"created_at\": \"2025-01-22T10:30:00Z\",\n  \"updated_at\": \"2025-01-22T10:30:00Z\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Get Feedback for Message",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-token",
+                    "value": "user-token",
+                    "description": "User authentication token"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations/{{conversationId}}/messages/{{messageId}}/feedback",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["v1.0", "tenants", "{{tenantGuid}}", "assistant", "conversations", "{{conversationId}}", "messages", "{{messageId}}", "feedback"]
+                },
+                "description": "Retrieve feedback for a specific message. Returns feedback if it exists, null otherwise."
+              },
+              "response": []
+            },
+            {
+              "name": "Update Feedback for Message",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "x-token",
+                    "value": "user-token",
+                    "description": "User authentication token"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rating\": \"negative\",\n  \"details\": \"Response was not accurate\",\n  \"tags\": [\"inaccurate\"]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations/{{conversationId}}/messages/{{messageId}}/feedback",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["v1.0", "tenants", "{{tenantGuid}}", "assistant", "conversations", "{{conversationId}}", "messages", "{{messageId}}", "feedback"]
+                },
+                "description": "Update existing feedback for a message. Only updates provided fields (partial update). Returns 404 if no feedback exists."
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Feedback for Message",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "x-token",
+                    "value": "user-token",
+                    "description": "User authentication token"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations/{{conversationId}}/messages/{{messageId}}/feedback",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["v1.0", "tenants", "{{tenantGuid}}", "assistant", "conversations", "{{conversationId}}", "messages", "{{messageId}}", "feedback"]
+                },
+                "description": "Delete feedback for a message. Returns success message whether feedback existed or not."
+              },
+              "response": []
+            },
+            {
+              "name": "List Conversation Feedback",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "x-token",
+                    "value": "user-token",
+                    "description": "User authentication token"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/conversations/{{conversationId}}/feedback?limit=100&offset=0",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["v1.0", "tenants", "{{tenantGuid}}", "assistant", "conversations", "{{conversationId}}", "feedback"],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100",
+                      "description": "Maximum feedback entries to return (1-1000)"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0",
+                      "description": "Number of entries to skip"
+                    }
+                  ]
+                },
+                "description": "List all feedback for messages in a conversation with pagination. Returns all feedback entries for the conversation."
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Message Feedback (Public)",
+          "item": [
+            {
+              "name": "Submit Feedback (Public)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "session-id",
+                    "value": "session-guid",
+                    "description": "Session ID (auto-generated if not provided)"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rating\": \"positive\",\n  \"details\": \"Very helpful and accurate response\",\n  \"tags\": [\"accurate\", \"helpful\"]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/public/conversations/{{conversationId}}/messages/{{messageId}}/feedback",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["v1.0", "tenants", "{{tenantGuid}}", "assistant", "public", "conversations", "{{conversationId}}", "messages", "{{messageId}}", "feedback"]
+                },
+                "description": "Submit feedback for an assistant message (PUBLIC). Session-based access - conversation must belong to session_id in request. Creates new feedback or updates existing feedback if already submitted."
+              },
+              "response": [
+                {
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "session-id",
+                        "value": "session-guid"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"rating\": \"positive\",\n  \"details\": \"Very helpful and accurate response\",\n  \"tags\": [\"accurate\", \"helpful\"]\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/public/conversations/{{conversationId}}/messages/{{messageId}}/feedback",
+                      "host": ["{{baseUrl}}"],
+                      "path": ["v1.0", "tenants", "{{tenantGuid}}", "assistant", "public", "conversations", "{{conversationId}}", "messages", "{{messageId}}", "feedback"]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [],
+                  "body": "{\n  \"feedback_id\": \"f47ac10b-58cc-4372-a567-0e02b2c3d479\",\n  \"message_id\": \"{{messageId}}\",\n  \"conversation_id\": \"{{conversationId}}\",\n  \"rating\": \"positive\",\n  \"details\": \"Very helpful and accurate response\",\n  \"tags\": [\"accurate\", \"helpful\"],\n  \"metadata\": null,\n  \"created_at\": \"2025-01-22T10:30:00Z\",\n  \"updated_at\": \"2025-01-22T10:30:00Z\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Get Feedback (Public)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "session-id",
+                    "value": "session-guid",
+                    "description": "Session ID (auto-generated if not provided)"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/public/conversations/{{conversationId}}/messages/{{messageId}}/feedback",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["v1.0", "tenants", "{{tenantGuid}}", "assistant", "public", "conversations", "{{conversationId}}", "messages", "{{messageId}}", "feedback"]
+                },
+                "description": "Retrieve feedback for a specific message (PUBLIC). Session-based access - conversation must belong to session_id in request. Returns feedback if it exists, null otherwise."
+              },
+              "response": []
+            },
+            {
+              "name": "Update Feedback (Public)",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "session-id",
+                    "value": "session-guid",
+                    "description": "Session ID (auto-generated if not provided)"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rating\": \"negative\",\n  \"details\": \"Response was not accurate\",\n  \"tags\": [\"inaccurate\"]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/public/conversations/{{conversationId}}/messages/{{messageId}}/feedback",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["v1.0", "tenants", "{{tenantGuid}}", "assistant", "public", "conversations", "{{conversationId}}", "messages", "{{messageId}}", "feedback"]
+                },
+                "description": "Update existing feedback for a message (PUBLIC). Session-based access - conversation must belong to session_id in request. Only updates provided fields (partial update). Returns 404 if no feedback exists."
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Feedback (Public)",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "session-id",
+                    "value": "session-guid",
+                    "description": "Session ID (auto-generated if not provided)"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/public/conversations/{{conversationId}}/messages/{{messageId}}/feedback",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["v1.0", "tenants", "{{tenantGuid}}", "assistant", "public", "conversations", "{{conversationId}}", "messages", "{{messageId}}", "feedback"]
+                },
+                "description": "Delete feedback for a message (PUBLIC). Session-based access - conversation must belong to session_id in request. Returns success message whether feedback existed or not."
+              },
+              "response": []
+            }
+          ]
+        },
+        {
           "name": "Threads (Legacy)",
           "item": [
             {
