@@ -14584,6 +14584,29 @@
                 "description": "Execute similarity search using config settings without LLM generation. Returns relevant documents only."
               },
               "response": []
+            },
+            {
+              "name": "Get Chunks by GUID",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chunk_guids\": [\n    \"chunk-guid-1\",\n    \"chunk-guid-2\",\n    \"chunk-guid-3\"\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1.0/tenants/{{tenantGuid}}/assistant/chunks/{{configGuid}}",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["v1.0", "tenants", "{{tenantGuid}}", "assistant", "chunks", "{{configGuid}}"]
+                },
+                "description": "Retrieve full chunk content by chunk GUIDs. This endpoint allows clients to fetch complete chunk text after receiving search results that contain only document-level previews. Use case: UI displays search results with document previews, user clicks to view a specific chunk, UI calls this endpoint to fetch the full chunk content."
+              },
+              "response": []
             }
           ]
         },
