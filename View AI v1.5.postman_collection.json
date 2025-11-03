@@ -3584,7 +3584,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v2.0/tenants/{{tenant-guid}}/summarizationrules/",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v2.0/tenants/{{tenant-guid}}/summarizationrules",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -3594,8 +3594,7 @@
 										"v2.0",
 										"tenants",
 										"{{tenant-guid}}",
-										"summarizationrules",
-										""
+										"summarizationrules"
 									]
 								}
 							},
@@ -3689,7 +3688,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"ModelProfileGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"example-metadata-rule-2\",\r\n    \"ContentType\": \"*\",\r\n    \"Prefix\": null,\r\n    \"Suffix\": null,\r\n    \"MaxContentLength\": 134217728,\r\n    \"Order\": \"BottomUp\",\r\n    \"SummarizationPrompt\": \"Task: Summarize the content below using the supplied context.\\nGuidance: Incorporate relevant contextual information into the summary.\\nLength: Maximum {tokens} tokens.\\nOutput format: Summary text only, without introductory or concluding remarks.\\n\\n=== CONTENT ===\\n{content}\\n\\n=== CONTEXT ===\\n{context}\",\r\n    \"MaxSummaryTokens\": 256,\r\n    \"MaxParallelTasks\": 4\r\n}"
+									"raw": "{\r\n    \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"ModelProfileGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"My summarization rule\",\r\n    \"ContentType\": \"*\",\r\n    \"Prefix\": null,\r\n    \"Suffix\": null,\r\n    \"MaxContentLength\": 134217728,\r\n    \"Order\": \"BottomUp\",\r\n    \"SummarizationPrompt\": \"Task: Summarize the content below using the supplied context.\\nGuidance: Incorporate relevant contextual information into the summary.\\nLength: Maximum {tokens} tokens.\\nOutput format: Summary text only, without introductory or concluding remarks.\\n\\n=== CONTENT ===\\n{content}\\n\\n=== CONTEXT ===\\n{context}\",\r\n    \"MaxSummaryTokens\": 256,\r\n    \"MaxParallelTasks\": 4\r\n}"
 								},
 								"url": {
 									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/summarizationrules",
@@ -3730,10 +3729,10 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"ModelProfileGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"example-metadata-rule-2\",\r\n    \"ContentType\": \"*\",\r\n    \"Prefix\": null,\r\n    \"Suffix\": null,\r\n    \"MaxContentLength\": 134217728,\r\n    \"Order\": \"BottomUp\",\r\n    \"SummarizationPrompt\": \"Task: Summarize the content below using the supplied context.\\nGuidance: Incorporate relevant contextual information into the summary.\\nLength: Maximum {tokens} tokens.\\nOutput format: Summary text only, without introductory or concluding remarks.\\n\\n=== CONTENT ===\\n{content}\\n\\n=== CONTEXT ===\\n{context}\",\r\n    \"MaxSummaryTokens\": 256,\r\n    \"MaxParallelTasks\": 4\r\n}"
+									"raw": "{\r\n    \"BucketGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"ModelProfileGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"Updated summarization rule\",\r\n    \"ContentType\": \"*\",\r\n    \"Prefix\": null,\r\n    \"Suffix\": null,\r\n    \"MaxContentLength\": 134217728,\r\n    \"Order\": \"BottomUp\",\r\n    \"SummarizationPrompt\": \"Task: Summarize the content below using the supplied context.\\nGuidance: Incorporate relevant contextual information into the summary.\\nLength: Maximum {tokens} tokens.\\nOutput format: Summary text only, without introductory or concluding remarks.\\n\\n=== CONTENT ===\\n{content}\\n\\n=== CONTEXT ===\\n{context}\",\r\n    \"MaxSummaryTokens\": 256,\r\n    \"MaxParallelTasks\": 4\r\n}"
 								},
 								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/summarizationrules/00000000-0000-0000-0000-000000000000",
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/summarizationrules/26c2b844-a72c-460f-8713-46bf6afc5cf6",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{hostname}}"
@@ -3744,7 +3743,7 @@
 										"tenants",
 										"{{tenant-guid}}",
 										"summarizationrules",
-										"00000000-0000-0000-0000-000000000000"
+										"26c2b844-a72c-460f-8713-46bf6afc5cf6"
 									]
 								}
 							},
@@ -5787,777 +5786,6 @@
 										"tenants",
 										"{{tenant-guid}}",
 										"objectlocks",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Model Configurations",
-					"item": [
-						{
-							"name": "Enumerate",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v2.0/tenants/{{tenant-guid}}/modelconfigs/",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v2.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelconfigs",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve All",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelconfigs/",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelconfigs",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelconfigs/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelconfigs",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Write",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [
-									{
-										"key": "content-type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"ModelName\": \"owner/modelname\",\r\n    \"Embeddings\": false,\r\n    \"Completions\": true,\r\n    \"ContextSize\": 4096,\r\n    \"MaxOutputTokens\": 2048,\r\n    \"Temperature\": 0.2,\r\n    \"TopP\": 1.0,\r\n    \"TopK\": 40,\r\n    \"FrequencyPenalty\": 0.0,\r\n    \"PresencePenalty\": 0.0,\r\n    \"EnableStreaming\": true,\r\n    \"TimeoutMs\": 30000,\r\n    \"AdditionalData\": \"My open text field\",\r\n    \"Active\": true\r\n}"
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelconfigs",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelconfigs"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [
-									{
-										"key": "content-type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"ModelName\": \"owner/modelname\",\r\n    \"Embeddings\": false,\r\n    \"Completions\": true,\r\n    \"ContextSize\": 4096,\r\n    \"MaxOutputTokens\": 2048,\r\n    \"Temperature\": 0.2,\r\n    \"TopP\": 1.0,\r\n    \"TopK\": 40,\r\n    \"FrequencyPenalty\": 0.0,\r\n    \"PresencePenalty\": 0.0,\r\n    \"EnableStreaming\": true,\r\n    \"TimeoutMs\": 30000,\r\n    \"AdditionalData\": \"My open text field\",\r\n    \"Active\": true\r\n}"
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelconfigs/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelconfigs",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"TenantGUID\": \"05b702a6-9c0e-4741-a465-581f2456e994\",\r\n    \"Name\": \"Another Storage Pool\",\r\n    \"Provider\": \"Disk\",\r\n    \"WriteMode\": \"GUID\",\r\n    \"UseSsl\": false,\r\n    \"DiskDirectory\": \"./disk2/\",\r\n    \"Dedupe\": false,\r\n    \"Compress\": \"None\",\r\n    \"EnableReadCaching\": false,\r\n    \"Encrypt\": \"None\"\r\n}"
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelconfigs/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelconfigs",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Check Existence",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "HEAD",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelconfigs/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelconfigs",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Model Endpoints",
-					"item": [
-						{
-							"name": "Enumerate",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v2.0/tenants/{{tenant-guid}}/modelendpoints/",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v2.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelendpoints",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve All",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelendpoints/",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelendpoints",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelendpoints/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelendpoints",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Write",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [
-									{
-										"key": "content-type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"Name\": \"My model endpoint\",\r\n    \"EndpointUrl\": \"http://localhost:8000/\",\r\n    \"BearerToken\": null,\r\n    \"ApiType\": \"Ollama\",\r\n    \"TimeoutMs\": 30000,\r\n    \"Labels\": [],\r\n    \"AdditionalData\": \"My open text field\",\r\n    \"Active\": true\r\n}"
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelendpoints",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelendpoints"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [
-									{
-										"key": "content-type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"Name\": \"My model endpoint\",\r\n    \"EndpointUrl\": \"http://localhost:8000/\",\r\n    \"BearerToken\": null,\r\n    \"ApiType\": \"Ollama\",\r\n    \"TimeoutMs\": 30000,\r\n    \"Labels\": [],\r\n    \"AdditionalData\": \"My open text field\",\r\n    \"Active\": true\r\n}"
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelendpoints/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelendpoints",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"TenantGUID\": \"05b702a6-9c0e-4741-a465-581f2456e994\",\r\n    \"Name\": \"Another Storage Pool\",\r\n    \"Provider\": \"Disk\",\r\n    \"WriteMode\": \"GUID\",\r\n    \"UseSsl\": false,\r\n    \"DiskDirectory\": \"./disk2/\",\r\n    \"Dedupe\": false,\r\n    \"Compress\": \"None\",\r\n    \"EnableReadCaching\": false,\r\n    \"Encrypt\": \"None\"\r\n}"
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelendpoints/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelendpoints",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Check Existence",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "HEAD",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelendpoints/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelendpoints",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Model Profiles",
-					"item": [
-						{
-							"name": "Enumerate",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v2.0/tenants/{{tenant-guid}}/modelprofiles/",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v2.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelprofiles",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve All",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelprofiles",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Retrieve",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelprofiles",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Write",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [
-									{
-										"key": "content-type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"ModelConfigurationGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"ModelEndpointGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"My model profile\",\r\n    \"AdditionalData\": \"My open text field\",\r\n    \"Active\": true\r\n}"
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelprofiles"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PUT",
-								"header": [
-									{
-										"key": "content-type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"ModelConfigurationGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"ModelEndpointGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"My model profile\",\r\n    \"AdditionalData\": \"My open text field\",\r\n    \"Active\": true\r\n}"
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelprofiles",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"TenantGUID\": \"05b702a6-9c0e-4741-a465-581f2456e994\",\r\n    \"Name\": \"Another Storage Pool\",\r\n    \"Provider\": \"Disk\",\r\n    \"WriteMode\": \"GUID\",\r\n    \"UseSsl\": false,\r\n    \"DiskDirectory\": \"./disk2/\",\r\n    \"Dedupe\": false,\r\n    \"Compress\": \"None\",\r\n    \"EnableReadCaching\": false,\r\n    \"Encrypt\": \"None\"\r\n}"
-								},
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelprofiles",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Check Existence",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accesskey}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "HEAD",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{hostname}}"
-									],
-									"port": "{{rest}}",
-									"path": [
-										"v1.0",
-										"tenants",
-										"{{tenant-guid}}",
-										"modelprofiles",
 										"00000000-0000-0000-0000-000000000000"
 									]
 								}
@@ -11047,6 +10275,35 @@
 							"response": []
 						},
 						{
+							"name": "Retrieve top terms (all collections)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/collections/topterms?max-keys=10",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"collections",
+										"topterms"
+									],
+									"query": [
+										{
+											"key": "max-keys",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Enumerate",
 							"request": {
 								"method": "GET",
@@ -11895,6 +11152,1114 @@
 											"key": "async",
 											"value": null
 										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Inference",
+			"item": [
+				{
+					"name": "Model Configurations",
+					"item": [
+						{
+							"name": "Enumerate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v2.0/tenants/{{tenant-guid}}/modelconfigs/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v2.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelconfigs",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelconfigs/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelconfigs",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelconfigs/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelconfigs",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Write",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"ModelName\": \"qwen2.5:3b\",\r\n    \"Embeddings\": false,\r\n    \"Completions\": true,\r\n    \"ContextSize\": 4096,\r\n    \"MaxOutputTokens\": 2048,\r\n    \"Temperature\": 0.2,\r\n    \"TopP\": 1.0,\r\n    \"TopK\": 40,\r\n    \"FrequencyPenalty\": 0.0,\r\n    \"PresencePenalty\": 0.0,\r\n    \"EnableStreaming\": true,\r\n    \"TimeoutMs\": 30000,\r\n    \"AdditionalData\": null,\r\n    \"Active\": true\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelconfigs",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelconfigs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ModelName\": \"owner/modelname\",\r\n    \"Embeddings\": false,\r\n    \"Completions\": true,\r\n    \"ContextSize\": 4096,\r\n    \"MaxOutputTokens\": 2048,\r\n    \"Temperature\": 0.2,\r\n    \"TopP\": 1.0,\r\n    \"TopK\": 40,\r\n    \"FrequencyPenalty\": 0.0,\r\n    \"PresencePenalty\": 0.0,\r\n    \"EnableStreaming\": true,\r\n    \"TimeoutMs\": 30000,\r\n    \"AdditionalData\": \"My open text field\",\r\n    \"Active\": true\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelconfigs/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelconfigs",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelconfigs/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelconfigs",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check Existence",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "HEAD",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelconfigs/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelconfigs",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Model Endpoints",
+					"item": [
+						{
+							"name": "Enumerate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v2.0/tenants/{{tenant-guid}}/modelendpoints/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v2.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelendpoints",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelendpoints/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelendpoints",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelendpoints/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelendpoints",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Write",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"My Ollama instance\",\r\n    \"EndpointUrl\": \"http://192.168.86.30:11434/\",\r\n    \"BearerToken\": null,\r\n    \"ApiType\": \"Ollama\",\r\n    \"TimeoutMs\": 30000,\r\n    \"Labels\": [],\r\n    \"AdditionalData\": null,\r\n    \"Active\": true\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelendpoints",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelendpoints"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\": \"My model endpoint\",\r\n    \"EndpointUrl\": \"http://localhost:8000/\",\r\n    \"BearerToken\": null,\r\n    \"ApiType\": \"Ollama\",\r\n    \"TimeoutMs\": 30000,\r\n    \"Labels\": [],\r\n    \"AdditionalData\": \"My open text field\",\r\n    \"Active\": true\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelendpoints/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelendpoints",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelendpoints/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelendpoints",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check Existence",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "HEAD",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelendpoints/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelendpoints",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Model Profiles",
+					"item": [
+						{
+							"name": "Enumerate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v2.0/tenants/{{tenant-guid}}/modelprofiles/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v2.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Write",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"GUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"ModelConfigurationGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"ModelEndpointGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"Runner for qwen2.5:3b on Ollama on http://192.168.86.30:11434/\",\r\n    \"AdditionalData\": null,\r\n    \"Active\": true\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ModelConfigurationGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"ModelEndpointGUID\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"Name\": \"My model profile\",\r\n    \"AdditionalData\": \"My open text field\",\r\n    \"Active\": true\r\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check Existence",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accesskey}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "HEAD",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ollama APIs",
+					"item": [
+						{
+							"name": "Generate Embeddings (Singular)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"model\": \"all-minilm\",\r\n  \"input\": \"Why is the sky blue?\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000/embeddings",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										"00000000-0000-0000-0000-000000000000",
+										"embeddings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate Embeddings (Multiple)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"model\": \"all-minilm\",\r\n  \"input\": [\r\n    \"Why is the sky blue?\", \r\n    \"Why is the grass green?\"\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000/embeddings",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										"00000000-0000-0000-0000-000000000000",
+										"embeddings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate a Completion",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"model\": \"gemma3:4b\",\r\n  \"prompt\": \"system: you are a helpful AI assistant, always be nice.\\nuser: give me a very long overview of the C programming language.\\nassistant:\",\r\n  \"stream\": false,\r\n  \"options\": {\r\n    \"num_predict\": 1000,\r\n    \"temperature\": 0.8,\r\n    \"top_p\": 0.9,\r\n    \"repeat_penalty\": 1.1,\r\n    \"stop\": [\"\\nuser:\"],\r\n    \"num_ctx\": 2048,\r\n    \"num_batch\": 512\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000001/completions",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										"00000000-0000-0000-0000-000000000001",
+										"completions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate a Chat Completion",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "content-type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"model\": \"gemma3:4b\",\r\n  \"stream\": true,\r\n  \"messages\": [\r\n    {\r\n      \"role\": \"system\",\r\n      \"content\": \"you are a helpful AI assistant.  be nice\"\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"content\": \"what can you tell me about botox\"\r\n    }\r\n  ],\r\n  \"options\": {\r\n    \"num_keep\": 5,\r\n    \"seed\": 42,\r\n    \"num_predict\": 100,\r\n    \"top_k\": 20,\r\n    \"top_p\": 0.9,\r\n    \"min_p\": 0,\r\n    \"tfs_z\": 0.5,\r\n    \"typical_p\": 0.7,\r\n    \"repeat_last_n\": 33,\r\n    \"temperature\": 0.8,\r\n    \"repeat_penalty\": 1.2,\r\n    \"presence_penalty\": 1.5,\r\n    \"frequency_penalty\": 1,\r\n    \"mirostat\": 1,\r\n    \"mirostat_tau\": 0.8,\r\n    \"mirostat_eta\": 0.6,\r\n    \"penalize_newline\": true,\r\n    \"numa\": false,\r\n    \"num_ctx\": 1024,\r\n    \"num_batch\": 2,\r\n    \"num_gpu\": 1,\r\n    \"main_gpu\": 0,\r\n    \"low_vram\": false,\r\n    \"f16_kv\": true,\r\n    \"vocab_only\": false,\r\n    \"use_mmap\": true,\r\n    \"use_mlock\": false,\r\n    \"num_thread\": 8\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000/completions",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										"00000000-0000-0000-0000-000000000000",
+										"completions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "OpenAI APIs",
+					"item": [
+						{
+							"name": "Generate Embeddings (Singular)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"model\": \"text-embedding-ada-002\",\r\n    \"input\": \"test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000/embeddings",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										"00000000-0000-0000-0000-000000000000",
+										"embeddings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate Embeddings (Multiple)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"model\": \"text-embedding-ada-002\",\r\n    \"input\": [\r\n        \"hello, world\",\r\n        \"foo to the bar\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000/embeddings",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										"00000000-0000-0000-0000-000000000000",
+										"embeddings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate a Completion (Singular)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"model\": \"gpt-3.5-turbo-instruct\",\r\n  \"prompt\": \"Write a brief explanation of machine learning in simple terms.\", \r\n  \"max_tokens\": 150,\r\n  \"temperature\": 0.7,\r\n  \"top_p\": 0.9,\r\n  \"n\": 1,\r\n  \"stream\": true,\r\n  \"presence_penalty\": 0.0,\r\n  \"frequency_penalty\": 0.3,\r\n  \"stop\": [\"###\", \"END\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000/completions",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										"00000000-0000-0000-0000-000000000000",
+										"completions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate Completions (Multiple)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"model\": \"gpt-3.5-turbo-instruct\",\r\n  \"prompt\": [ \r\n    \"Write a brief explanation of machine learning in simple terms.\", \r\n    \"Give me a brief overview of the C programming language.\" \r\n  ],\r\n  \"max_tokens\": 150,\r\n  \"temperature\": 0.7,\r\n  \"top_p\": 0.9,\r\n  \"n\": 1,\r\n  \"stream\": true,\r\n  \"presence_penalty\": 0.0,\r\n  \"frequency_penalty\": 0.3,\r\n  \"stop\": [\"###\", \"END\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000/completions",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										"00000000-0000-0000-0000-000000000000",
+										"completions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate a Chat Completion",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"model\": \"gpt-4-turbo-preview\",\r\n  \"messages\": [\r\n    {\r\n      \"role\": \"system\",\r\n      \"content\": \"You are a helpful assistant specializing in technical topics.\",\r\n      \"name\": \"system_instructor\"\r\n    },\r\n    {\r\n      \"role\": \"user\",\r\n      \"content\": \"Explain how neural networks work\",\r\n      \"name\": \"john_doe\"\r\n    }\r\n  ],\r\n  \"temperature\": 0.7,\r\n  \"top_p\": 0.9,\r\n  \"n\": 1,\r\n  \"stream\": false,\r\n  \"stop\": [\"\\n\\n\", \"END\"],\r\n  \"max_tokens\": 1000,\r\n  \"presence_penalty\": 0.0,\r\n  \"frequency_penalty\": 0.3,\r\n  \"user\": \"user-123456\",\r\n  \"seed\": 42\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/modelprofiles/00000000-0000-0000-0000-000000000000/chat/completions",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"modelprofiles",
+										"00000000-0000-0000-0000-000000000000",
+										"chat",
+										"completions"
 									]
 								}
 							},
