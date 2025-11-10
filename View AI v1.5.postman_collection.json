@@ -14675,6 +14675,50 @@
 								"description": "List all feedback for messages in a conversation with pagination. Returns all feedback entries for the conversation."
 							},
 							"response": []
+						},
+						{
+							"name": "List Config Feedback",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "user-token",
+										"description": "User authentication token"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/configs/{{config-guid}}/feedback?limit=100&offset=0",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"configs",
+										"{{config-guid}}",
+										"feedback"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "100",
+											"description": "Maximum feedback entries to return (1-1000)"
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "Number of entries to skip"
+										}
+									]
+								},
+								"description": "Retrieve all feedback entries for conversations using a specific config. Returns paginated list of feedback from all conversations associated with this config_guid, ordered by creation time (newest first). No conversation ownership validation."
+							},
+							"response": []
 						}
 					]
 				},
@@ -16317,6 +16361,10 @@
 		},
 		{
 			"key": "message-id",
+			"value": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"key": "config-guid",
 			"value": "00000000-0000-0000-0000-000000000000"
 		}
 	]
