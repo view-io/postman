@@ -16252,6 +16252,286 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "MCP Servers",
+					"item": [
+						{
+							"name": "List MCP Servers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/mcp/servers?active_only=false",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"mcp",
+										"servers"
+									],
+									"query": [
+										{
+											"key": "active_only",
+											"value": "false",
+											"description": "Only return active servers"
+										}
+									]
+								},
+								"description": "List all MCP servers for a tenant."
+							},
+							"response": []
+						},
+						{
+							"name": "Create MCP Server (stdio)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Name\": \"my-mcp-server\",\n  \"DisplayName\": \"My MCP Server\",\n  \"Description\": \"Example MCP server using stdio transport\",\n  \"Transport\": \"stdio\",\n  \"Command\": \"npx\",\n  \"Args\": [\"-y\", \"@modelcontextprotocol/server-filesystem\", \"/path/to/allowed/dir\"],\n  \"EnvVars\": {},\n  \"AutoConnect\": true\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/mcp/servers",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"mcp",
+										"servers"
+									]
+								},
+								"description": "Create a new MCP server with stdio transport. Status code: 201."
+							},
+							"response": []
+						},
+						{
+							"name": "Create MCP Server (sse)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Name\": \"remote-mcp-server\",\n  \"DisplayName\": \"Remote MCP Server\",\n  \"Description\": \"Example MCP server using SSE transport\",\n  \"Transport\": \"sse\",\n  \"Url\": \"http://localhost:3001/sse\",\n  \"EnvVars\": {\n    \"API_KEY\": \"your-api-key\"\n  },\n  \"AutoConnect\": true\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/mcp/servers",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"mcp",
+										"servers"
+									]
+								},
+								"description": "Create a new MCP server with SSE transport. Status code: 201."
+							},
+							"response": []
+						},
+						{
+							"name": "Get MCP Server",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/mcp/servers/{{server-guid}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"mcp",
+										"servers",
+										"{{server-guid}}"
+									]
+								},
+								"description": "Get MCP server by ID."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Server Tools",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/mcp/servers/{{server-guid}}/tools?active_only=true",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"mcp",
+										"servers",
+										"{{server-guid}}",
+										"tools"
+									],
+									"query": [
+										{
+											"key": "active_only",
+											"value": "true",
+											"description": "Only return active tools"
+										}
+									]
+								},
+								"description": "Get tools for an MCP server."
+							},
+							"response": []
+						},
+						{
+							"name": "Update MCP Server",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"DisplayName\": \"Updated Server Name\",\n  \"Description\": \"Updated description\",\n  \"Command\": null,\n  \"Args\": null,\n  \"EnvVars\": null,\n  \"Url\": null,\n  \"Reconnect\": true\n}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/mcp/servers/{{server-guid}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"mcp",
+										"servers",
+										"{{server-guid}}"
+									]
+								},
+								"description": "Update MCP server configuration."
+							},
+							"response": []
+						},
+						{
+							"name": "Delete MCP Server",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/mcp/servers/{{server-guid}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"mcp",
+										"servers",
+										"{{server-guid}}"
+									]
+								},
+								"description": "Delete an MCP server."
+							},
+							"response": []
+						},
+						{
+							"name": "Connect to MCP Server",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/mcp/servers/{{server-guid}}/connect",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"mcp",
+										"servers",
+										"{{server-guid}}",
+										"connect"
+									]
+								},
+								"description": "Connect to an MCP server."
+							},
+							"response": []
+						},
+						{
+							"name": "Disconnect from MCP Server",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/mcp/servers/{{server-guid}}/disconnect",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{hostname}}"
+									],
+									"port": "{{rest}}",
+									"path": [
+										"v1.0",
+										"tenants",
+										"{{tenant-guid}}",
+										"assistant",
+										"mcp",
+										"servers",
+										"{{server-guid}}",
+										"disconnect"
+									]
+								},
+								"description": "Disconnect from an MCP server."
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
