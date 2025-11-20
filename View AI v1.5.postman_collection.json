@@ -16162,8 +16162,17 @@
 						{
 							"name": "Get Config Conversations Metrics",
 							"request": {
-								"method": "GET",
-								"header": [],
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"StartDate\": null,\n  \"EndDate\": null\n}"
+								},
 								"url": {
 									"raw": "{{protocol}}://{{hostname}}:{{rest}}/v1.0/tenants/{{tenant-guid}}/assistant/metrics/configs/{{config-guid}}/conversations",
 									"protocol": "{{protocol}}",
